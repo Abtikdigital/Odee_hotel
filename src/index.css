@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+.heading-1 {
+  @apply font-extrabold text-5xl uppercase text-[#3D0F00];
+}
+.paragraph-1 {
+  @apply font-medium;
+}
+.font-1 {
+  font-family: "Poppins";
+}
+.font-2 {
+  font-family: "Plus Jakarta sans";
+}
+.coffe-button {
+  @apply bg-[#3D0F00]  text-white transition-all duration-300  p-2.5 rounded-lg cursor-pointer  hover:bg-[#752D16];
+}
+.light-coffe-button {
+  @apply bg-[#3D0F00]/15  transition-all duration-300  text-[#3D0F00] p-2.5 rounded-lg cursor-pointer hover:bg-[#3D0F00]/30 hover:text-white;
+}
+
+.footer-icon {
+  @apply bg-white rounded-full text-[#1A202C] p-1.5 cursor-pointer hover:text-[#3D0F00] hover:bg-gray-300 transition-all duration-300;
+}
