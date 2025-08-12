@@ -3,7 +3,13 @@
 .heading-1 {
   @apply font-extrabold text-5xl uppercase text-[#3D0F00];
 }
-.paragraph-1 {
+.heading-2 {
+  @apply font-bold text-5xl  text-[#3D0F00];
+}
+.heading-3{
+  @apply font-semibold 
+}
+.paragraph-1{
   @apply font-medium;
 }
 .font-1 {
@@ -12,11 +18,20 @@
 .font-2 {
   font-family: "Plus Jakarta sans";
 }
+.font-3 {
+  font-family: "Inter";
+}
+.font-4{
+font-family: "Rubik";
+}
 .coffe-button {
-  @apply bg-[#3D0F00]  text-white transition-all duration-300  p-2.5 rounded-lg cursor-pointer  hover:bg-[#752D16];
+  @apply bg-[#3D0F00]  text-white transition-all duration-300  p-2.5 px-3.5 rounded-lg cursor-pointer  hover:bg-[#752D16];
 }
 .light-coffe-button {
-  @apply bg-[#3D0F00]/15  transition-all duration-300  text-[#3D0F00] p-2.5 rounded-lg cursor-pointer hover:bg-[#3D0F00]/30 hover:text-white;
+  @apply bg-[#3D0F00]/15  transition-all duration-300  text-[#3D0F00] p-2.5 px-3.5 rounded-lg cursor-pointer hover:bg-[#3D0F00]/30 hover:text-white;
+}
+.white-button {
+  @apply bg-[#FFFFFF] px-6 text-[#3D0F00] transition-all duration-300 p-2.5 rounded-lg cursor-pointer hover:bg-gray-300;
 }
 
 .footer-icon {
