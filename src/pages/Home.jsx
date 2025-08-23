@@ -6,19 +6,20 @@ import OurServices from "../section/OurServices"
 import Testimonial from "../section/Testimonial"
 import Contact from "../section/Contact"
 import AboutUs from "../section/AboutUs"
+import Mainlayout from "../section/Mainlayout"
 
 
 const Home = () => {
-    return (<>
-        <Navbar />
+    return (<Mainlayout>
+     
         <Hero/>
         <Partner/>
         <AboutUs/>
         <OurServices/>
         <Testimonial/>
         <Contact/>
-        <Footer />
-    </>)
+    
+    </Mainlayout>)
 }
 
 export default Home

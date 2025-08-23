@@ -9,23 +9,24 @@ import { Check } from "lucide-react";
 import Member1 from "../assets/Team/Member1.png";
 import Member2 from "../assets/Team/Member2.png";
 import Member3 from "../assets/Team/Member3.png";
+import Mainlayout from "../section/Mainlayout";
 
 const About = () => {
   const aboutSection = [
     {
       icon: Check,
-      title: "Vision",
-      description: "lorem 10 lorem 20",
+      title: "Our Vision",
+      description: "Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis. Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis.",
     },
     {
       icon: Check,
-      title: "mission",
-      description: "lorem 20 lorem 30",
+      title: "Our Mission",
+      description: "Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis. Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis.",
     },
     {
       icon: Check,
-      title: "credit",
-      description: "lorem 20 lorem 30",
+      title: "Our Hotel",
+      description: "Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis. Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis.",
     },
   ];
   const teamData = [
@@ -46,12 +47,11 @@ const About = () => {
     },
   ];
   return (
-    <>
-      <Navbar />
+    <Mainlayout>
       <Hero />
       <Partner />
       {/* About Us Section */}
-      <section className="bg-[#FFF5F1] space-y-6 p-10">
+      <section className="bg-[#FFF5F1] space-y-6 md:space-y-12 p-10">
         <h2 className="heading-2 text-center uppercase">About Us</h2>
         <p className="paragraph-1 text-[#1A202C]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
@@ -63,7 +63,10 @@ const About = () => {
             {aboutSection?.map((data) => (
               <div className="space-y-3  ">
                 <div className="flex gap-6 relativ items-center">
-                  <data.icon className="!w-8 !h-8 rounded-full bg-[#3D0F00]/20 p-1" />
+                  <div className="relative">
+                    <data.icon className="!w-11 !h-11  p-1 " strokeWidth={4}     />
+                    <Check className="!w-11 !h-11  p-1 absolute top-3 blur-[3px]" strokeWidth={4} />
+                  </div>
 
                   <h2 className="heading-2">{data?.title}</h2>
                 </div>
@@ -74,16 +77,16 @@ const About = () => {
             ))}
           </div>
           <div>
-            <img src={Image1} />
+            <img src={Image1} className="h-full" />
           </div>
         </section>
       </section>
 
       {/* Team Section */}
 
-      <section className="bg-[#FFF5F1] space-y-10 p-10">
+      <section className="bg-[#FFF5F1] space-y-6 md:space-y-12 p-10">
         <h2 className="heading-2 text-center">Meet Our Team</h2>
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {teamData?.map((team) => {
             return (
               <div className="space-y-3">
@@ -104,8 +107,7 @@ const About = () => {
       </section>
       <Testimonial />
       <Contact />
-      <Footer />
-    </>
+    </Mainlayout>
   );
 };
 

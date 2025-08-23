@@ -1,7 +1,7 @@
 import Image1 from "../assets/Contact/Image1.jpg";
 const Contact = () => {
   return (
-    <div className="bg-[#FFF5F1] p-10 space-y-8 ">
+    <div className="bg-[#FFF5F1] p-4 md:p-10 space-y-6  md:space-y-12 ">
       <h2 className="heading-2 text-center">Contact Us</h2>
       <p className="font-2 pargraph-1 text-center">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel modi neque
@@ -14,7 +14,7 @@ const Contact = () => {
             className="rounded-xl duration-300 hover:scale-105 cursor-pointer h-full"
           />
         </div>
-        <div className="bg-[#3D0F00] rounded-2xl p-10 gap-8 flex flex-col  w-full ">
+        <div className="bg-[#3D0F00] rounded-2xl p-6 md:p-10 gap-8 flex flex-col  w-full ">
           <input
             className="bg-white w-full text-[#B8B8B8] font-3 p-5 rounded-xl  font-semibold outline-[#3D0F00]"
             placeholder="Enter Your Name"

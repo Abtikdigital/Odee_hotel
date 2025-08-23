@@ -4,7 +4,7 @@
   @apply font-extrabold text-5xl uppercase text-[#3D0F00];
 }
 .heading-2 {
-  @apply font-bold text-5xl  text-[#3D0F00];
+  @apply font-bold text-4xl md:text-5xl  text-[#3D0F00];
 }
 .heading-3{
   @apply font-semibold 

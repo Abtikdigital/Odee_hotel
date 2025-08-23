@@ -147,7 +147,7 @@ const Testimonial = () => {
   };
 
   return (
-    <section className="p-4 sm:p-6 lg:p-10 bg-[#FFF5F1] space-y-6">
+    <section className="p-4  lg:p-10 bg-[#FFF5F1] space-y-6 md:space-y-12">
       <h1 className="heading-2 text-center text-2xl sm:text-3xl lg:text-4xl font-bold text-[#3D0F00]">
         Trusted by Thousands of Happy Customer
       </h1>

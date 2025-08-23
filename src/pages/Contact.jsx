@@ -2,11 +2,12 @@ import Footer from "../section/Footer";
 import Hero from "../section/Hero";
 import Navbar from "../section/Navbar";
 import ContactSection from "../section/Contact";
+import Mainlayout from "../section/Mainlayout";
 
 const Contact = () => {
   return (
-    <>
-      <Navbar />
+    <Mainlayout>
+      
       <Hero />
       {/* Map Section */}
       <div className="p-10 bg-[#FFF5F1] space-y-6">
@@ -24,8 +25,8 @@ const Contact = () => {
         </div>
       </div>
       <ContactSection />
-      <Footer />
-    </>
+     
+    </Mainlayout>
   );
 };
 
