@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 // Sample data for all services with categories
 const allCards = [
@@ -48,6 +49,10 @@ const OurServices = () => {
   const handleSeeMore = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + ITEMS_PER_PAGE);
   };
+  const disp=useDispatch()
+  const isDialogOpen=()=>{
+    disp({type:"open"})
+  }
 
   return (
     <section className="bg-[#FFF5F1] p-4  md:p-10 space-y-6 md:space-y-12">
@@ -92,7 +97,7 @@ const OurServices = () => {
               <div className="flex justify-between items-center">
                 <div className="text-xl font-semibold">Rs {card.price}/-</div>
                 <div>
-                  <button className="bg-white text-[#3D0F00] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+                  <button onClick={isDialogOpen} className="bg-white cursor-pointer text-[#3D0F00] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
                     Rent Now
                   </button>
                 </div>

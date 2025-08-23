@@ -1,31 +1,67 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 // Sample data for all services with categories
 const allCards = [
   { id: 1, title: "Grand Ballroom", price: "5000", category: "Wedding Events" },
-  { id: 2, title: "Fun Zone Party", price: "800", category: "Birthday Parties" },
+  {
+    id: 2,
+    title: "Fun Zone Party",
+    price: "800",
+    category: "Birthday Parties",
+  },
   { id: 3, title: "Deluxe King Room", price: "250", category: "Book Rooms" },
-  { id: 4, title: "Garden Gazebo Setup", price: "2000", category: "Wedding Events" },
-  { id: 5, title: "Standard Double Room", price: "150", category: "Book Rooms" },
-  { id: 6, title: "Magic Show Package", price: "1200", category: "Birthday Parties" },
+  {
+    id: 4,
+    title: "Garden Gazebo Setup",
+    price: "2000",
+    category: "Wedding Events",
+  },
+  {
+    id: 5,
+    title: "Standard Double Room",
+    price: "150",
+    category: "Book Rooms",
+  },
+  {
+    id: 6,
+    title: "Magic Show Package",
+    price: "1200",
+    category: "Birthday Parties",
+  },
   { id: 7, title: "Honeymoon Suite", price: "400", category: "Book Rooms" },
-  { id: 8, title: "Full Catering Service", price: "3000", category: "Wedding Events" },
-  { id: 9, title: "Themed Party Decor", price: "1500", category: "Birthday Parties" },
+  {
+    id: 8,
+    title: "Full Catering Service",
+    price: "3000",
+    category: "Wedding Events",
+  },
+  {
+    id: 9,
+    title: "Themed Party Decor",
+    price: "1500",
+    category: "Birthday Parties",
+  },
   { id: 10, title: "Conference Hall", price: "1800", category: "Book Rooms" },
-  { id: 11, title: "DJ & Music System", price: "1000", category: "Wedding Events" },
-  { id: 12, title: "Kids Play Area", price: "900", category: "Birthday Parties" },
+  {
+    id: 11,
+    title: "DJ & Music System",
+    price: "1000",
+    category: "Wedding Events",
+  },
+  {
+    id: 12,
+    title: "Kids Play Area",
+    price: "900",
+    category: "Birthday Parties",
+  },
 ];
 
 // Number of items to show initially and load with each "See More" click
 const ITEMS_PER_PAGE = 4;
 
 const OurServices = () => {
-  const tabs = [
-    "All",
-    "Wedding Events",
-    "Birthday Parties",
-    "Book Rooms",
-  ];
+  const tabs = ["All", "Wedding Events", "Birthday Parties", "Book Rooms"];
 
   const [activeTab, setActiveTab] = useState(tabs[0]);
   // State to track the number of visible items
@@ -47,6 +83,10 @@ const OurServices = () => {
   // Handler for "See More" button
   const handleSeeMore = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + ITEMS_PER_PAGE);
+  };
+  const disp = useDispatch();
+  const toggleOpenDialog = () => {
+    disp({ type: "open" });
   };
 
   return (
@@ -92,7 +132,10 @@ const OurServices = () => {
               <div className="flex justify-between items-center">
                 <div className="text-xl font-semibold">Rs {card.price}/-</div>
                 <div>
-                  <button className="bg-white text-[#3D0F00] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+                  <button
+                    onClick={toggleOpenDialog}
+                    className="bg-white cursor-pointer text-[#3D0F00] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition"
+                  >
                     Rent Now
                   </button>
                 </div>

@@ -6,12 +6,14 @@ import Contact from "./pages/Contact"
 import Events from "./pages/Events"
 import Services from './pages/Services'
 import About from "./pages/About"
+import ScrollToUp from './utils/scrollToUp'
 function App() {
 
 
   return (
     <>
     <BrowserRouter>
+      <ScrollToUp/>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/contact' element={<Contact/>}/>

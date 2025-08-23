@@ -29,20 +29,20 @@ const Navbar = () => {
         <div>
           <img src={Logo} className="h-16" alt="Logo" />
         </div>
-        <ul className="font-1 gap-14 flex px-4">
+        <ul className="font-1 gap-12 flex px-4">
           {navItems.map(({ path, label }) => {
             const isActive = location.pathname === path;
             return (
               <Link
                 key={path}
                 to={path}
-                className={`font-normal relative transition-all duration-300 group ${
-                  isActive ? "font-semibold" : "hover:font-semibold"
+                className={`font-normal    relative transition-all  duration-300 group ${
+                  isActive ? "!font-medium" : ""
                 }`}
               >
                 {label}
                 <div
-                  className={`bg-[#3D0F00] h-1 rounded-4xl absolute -bottom-2.5 left-0 transition-transform duration-300 origin-left
+                  className={`bg-[#3D0F00] h-1 rounded-4xl absolute -bottom-2.5 left-0 transition-all duration-300 origin-left
                     ${
                       isActive
                         ? "scale-x-100"
