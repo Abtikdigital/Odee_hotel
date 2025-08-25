@@ -16,34 +16,34 @@ const About = () => {
     {
       icon: Check,
       title: "Our Vision",
-      description: "Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis. Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis.",
+      description: "To become the most trusted multi cuisine destination, offering diverse food experiences with unmatched hospitality, comfort, and convenience for families, groups, professionals, and travelers alike.",
     },
     {
       icon: Check,
       title: "Our Mission",
-      description: "Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis. Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis.",
+      description: "To serve quality food prepared with care, provide modern facilities like takeaway, delivery, and catering, and ensure every guest enjoys a seamless dining experience with lasting memories.",
     },
     {
       icon: Check,
       title: "Our Hotel",
-      description: "Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis. Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis.",
+      description: "Our hotel is designed to offer spacious dining areas, ample parking, and event-ready amenities. With comfort and service at the core, we create a welcoming place where every visit feels delightful.",
     },
   ];
   const teamData = [
     {
       img: Member1,
-      name: "Jay",
-      position: "None",
+      name: "Yashasvi Sharma",
+      position: "Founder & Director",
     },
     {
       img: Member2,
-      name: "Jay",
-      position: "None",
+      name: "Neha Joshi",
+      position: "Head Chef",
     },
     {
       img: Member3,
-      name: "Jay",
-      position: "None",
+      name: "Rahul Shah",
+      position: "Operations Manager",
     },
   ];
   return (
@@ -54,9 +54,7 @@ const About = () => {
       <section className="bg-[#FFF5F1] space-y-6 md:space-y-12 p-10">
         <h2 className="heading-2 text-center uppercase">About Us</h2>
         <p className="paragraph-1 text-[#1A202C]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-          reiciendis impedit labore assumenda molestiae dolorem aut quidem
-          dolore officia iusto.
+          Ode Hotel and Resort Private Limited brings you authentic multi cuisine dining, beverages, desserts, and catering all in one place.
         </p>
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-6">

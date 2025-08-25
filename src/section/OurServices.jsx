@@ -59,8 +59,7 @@ const OurServices = () => {
       <div className="text-center space-y-3">
         <h2 className="heading-2">Our Services</h2>
         <p className="text-base md:text-lg text-[#1A202C]">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam,
-          provident.
+         Our services include dining, delivery, catering, and event hosting.
         </p>
       </div>
 

@@ -4,8 +4,7 @@ const Contact = () => {
     <div className="bg-[#FFF5F1] p-4 md:p-10 space-y-6  md:space-y-12 ">
       <h2 className="heading-2 text-center">Contact Us</h2>
       <p className="font-2 pargraph-1 text-center">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel modi neque
-        nostrum sint incidunt omnis ut iste quibusdam, velit est.
+        Have any queries about food, events, or services? Connect with us and we’ll be happy to help you.
       </p>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>

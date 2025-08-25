@@ -4,46 +4,40 @@ import { useState, useEffect, useRef } from "react";
 const Testimonial = () => {
   const testimonialData = [
     {
-      name: "Viezh Robert",
-      location: "Warsaw, Poland",
-      heading: "Lorem ipsum dolor sit amet consectetur.",
-      message: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos neque
-            sint quas suscipit. Corrupti adipisci id unde quasi nemo suscipit.`,
+      name: "Ravi Patel",
+      location: "Ahmedabad, Gujarat",
+      heading: "",
+      message: `Booked their catering for a wedding function. Everything was well arranged, food quality was outstanding, and all the guests enjoyed it completely.`,
     },
     {
-      name: "Yessica Christy",
-      location: "Shanxi, China",
-      heading: "Lorem ipsum dolor sit amet consectetur.",
-      message: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos neque
-            sint quas suscipit. Corrupti adipisci id unde quasi nemo suscipit.`,
+      name: "Suresh Iyer",
+      location: "Chennai, Tamil Nadu",
+      heading: "",
+      message: `The restaurant offers a mix of Indian and continental. Every dish we tried was delicious, hygienic, and worth recommending to friends and family.`,
     },
     {
-      name: "Kim Young Jou",
-      location: "Seoul, South Korea",
-      heading: "Lorem ipsum dolor sit amet consectetur.",
-      message: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos neque
-            sint quas suscipit. Corrupti adipisci id unde quasi nemo suscipit.`,
+      name: "Pooja Sharma",
+      location: "Mumbai, Maharashtra",
+      heading: "",
+      message: `Loved the variety of dishes and desserts. Staff was polite, service was quick, and the overall atmosphere made us feel very comfortable.`,
     },
     {
-      name: "Sarah Johnson",
-      location: "New York, USA",
-      heading: "Lorem ipsum dolor sit amet consectetur.",
-      message: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos neque
-            sint quas suscipit. Corrupti adipisci id unde quasi nemo suscipit.`,
+      name: "Rahul Verma",
+      location: "Lucknow, Uttar Pradesh",
+      heading: "",
+      message: `The catering service was on time and well-managed. Guests appreciated the quality and taste, making our celebration memorable and stress-free.`,
     },
     {
-      name: "Michael Chen",
-      location: "Toronto, Canada",
-      heading: "Lorem ipsum dolor sit amet consectetur.",
-      message: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos neque
-            sint quas suscipit. Corrupti adipisci id unde quasi nemo suscipit.`,
+      name: "Neha Kapoor",
+      location: "Pune, Maharashtra",
+      heading: "",
+      message: `From booking to dining, the process was seamless. The food was tasty, well presented, and the staff ensured a delightful overall experience.`,
     },
     {
-      name: "Emma Wilson",
-      location: "London, UK",
-      heading: "Lorem ipsum dolor sit amet consectetur.",
-      message: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos neque
-            sint quas suscipit. Corrupti adipisci id unde quasi nemo suscipit.`,
+      name: "Arjun Nair",
+      location: "Bengaluru, Karnataka",
+      heading: "",
+      message: `The catering service exceeded expectations. Menu options were diverse, flavors authentic, and every guest praised the quality and freshness of the food.`,
     },
   ];
 
@@ -152,9 +146,7 @@ const Testimonial = () => {
         Trusted by Thousands of Happy Customer
       </h1>
       <p className="pargraph-1 font-2 text-center text-sm sm:text-base lg:text-lg text-[#3D0F00]/80 ">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum
-        adipisci perspiciatis veniam et repellat, quas quisquam aliquid
-        exercitationem beatae debitis?
+        We are proud to serve families, professionals, and travelers with quality food, catering, and hospitality.
       </p>
 
       {/* Cards Section with Slider */}

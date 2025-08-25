@@ -12,12 +12,10 @@ const Hero = () => {
     <section className="grid grid-cols-1 md:grid-cols-2   bg-[#FFF5F1] py-10 gap-y-6">
       <div className="px-4 md:px-10 flex flex-col justify-center space-y-6  md:space-y-12">
         <h1 className="font-2 heading-1">
-          Lorem Ipsum Neque porro qui dolorem{" "}
+         Ode Hotel & Resort Multi-Cuisine Dining & Catering{" "}
         </h1>
         <p className="font-2 pargraph-1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation
+          From multi-cuisine dining to refreshing beverages and desserts, we bring variety under one roof. Enjoy our takeaway, delivery, catering, and family dining designed for comfort and convenience.
         </p>
         <div className="flex gap-3">
           <button className="coffe-button font-2" onClick={toggleOpenDialog}>

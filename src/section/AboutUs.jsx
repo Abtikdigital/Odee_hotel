@@ -5,8 +5,7 @@ const AboutUs = () => {
     <section className="p-10 bg-[#FFF5F1] space-y-6 md:space-y-12">
       <h2 className="text-3xl md:text-4xl font-bold text-center">About Us</h2>
       <p className="text-base md:text-lg text-center">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati,
-        delectus.
+       We provide authentic cuisines, catering, and dining services with comfort, taste, and care.
       </p>
 
       <div className="relative flex flex-col md:flex-row gap-12 md:gap-6">
@@ -21,8 +20,7 @@ const AboutUs = () => {
             Choose Event's
           </h2>
           <p className="text-center font-2 text-[#1A202C] font-normal">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet,
-            sint?
+           Choose from our variety of food and event services with ease.
           </p>
         </div>
 
@@ -55,8 +53,7 @@ const AboutUs = () => {
             Book Event's
           </h2>
           <p className="text-center font-2">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet,
-            sint?
+           Book catering or dining experiences with ease and convenience.
           </p>
         </div>
 
@@ -89,8 +86,7 @@ const AboutUs = () => {
             Enjoy Event's
           </h2>
           <p className="text-center font-2">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet,
-            sint?
+           Enjoy flavorful food and excellent hospitality every time.
           </p>
         </div>
       </div>
