@@ -6,7 +6,7 @@ import Contact from "./pages/Contact"
 import Events from "./pages/Events"
 import Services from './pages/Services'
 import About from "./pages/About"
-import ScrollToUp from './utils/scrollToUp'
+import ScrollToUp from './utils/ScrollToUp'
 function App() {
 
 
