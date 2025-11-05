@@ -90,6 +90,9 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
+
+
+      
     </section>
   );
 };
