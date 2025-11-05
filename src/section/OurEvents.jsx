@@ -90,27 +90,26 @@ const OurServices = () => {
   };
 
   return (
-    <section className="bg-[#FFF5F1] p-4 md:p-10 space-y-6 md:space-y-12">
-      <div className="text-center space-y-3">
+    <section className="bg-gradient-to-br from-[#046307]/5 via-[#0F52BA]/5 to-[#800020]/5 p-4 sm:p-6 md:p-10 space-y-6 md:space-y-12">
+      <div className="text-center space-y-3 px-4">
         <h2 className="heading-2">Our Event's</h2>
-        <p className="text-base md:text-lg text-[#1A202C]">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam,
-          provident.
+        <p className="text-base sm:text-lg md:text-xl text-gray-700 font-2 max-w-3xl mx-auto">
+          Discover our exclusive events and celebrations designed for luxury and elegance.
         </p>
       </div>
 
       <section className="space-y-4 md:space-y-6">
         {/* Tabs container */}
-        <div className="relative border-b-2 border-[#90A3BF]">
-          <div className="flex overflow-x-auto whitespace-nowrap">
+        <div className="relative border-b-2 border-[#B08D57]/30">
+          <div className="flex overflow-x-auto whitespace-nowrap scrollbar-hide">
             {tabs?.map((data) => (
               <button
                 key={data}
                 onClick={() => handleTabClick(data)}
-                className={`flex-1 cursor-pointer font-medium text-base md:text-lg p-3 transition-colors duration-300 ${
+                className={`flex-1 min-w-fit cursor-pointer font-medium text-sm sm:text-base md:text-lg p-3 sm:p-4 transition-colors duration-300 ${
                   activeTab === data
-                    ? "text-[#3D0F00] border-b-2 border-[#3D0F00]"
-                    : "text-[#1A202C] hover:text-[#3D0F00]"
+                    ? "text-[#046307] border-b-2 border-[#046307] font-semibold"
+                    : "text-gray-700 hover:text-[#046307]"
                 }`}
               >
                 {data}
@@ -120,21 +119,21 @@ const OurServices = () => {
         </div>
 
         {/* Cards Grid - now shows a "slice" of the filtered cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {filteredCards?.slice(0, visibleItems).map((card) => (
             <div
               key={card.id}
-              className="h-96 bg-[#DEE5ED] rounded-lg flex flex-col justify-between p-6"
+              className="h-auto min-h-[280px] sm:min-h-[320px] md:min-h-[360px] bg-gradient-to-br from-white to-[#046307]/5 rounded-lg flex flex-col justify-between p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-[#B08D57]/20"
             >
-              <h3 className="font-bold text-2xl text-[#1A202C]">
+              <h3 className="font-serif-elegant font-bold text-xl sm:text-2xl text-[#800020] mb-4">
                 {card.title}
               </h3>
-              <div className="flex justify-between items-center">
-                <div className="text-xl font-semibold">Rs {card.price}/-</div>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
+                <div className="text-lg sm:text-xl font-semibold text-[#0F52BA]">Rs {card.price}/-</div>
                 <div>
                   <button
                     onClick={toggleOpenDialog}
-                    className="bg-white cursor-pointer text-[#3D0F00] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition"
+                    className="bg-gradient-to-r from-[#046307] to-[#0F52BA] cursor-pointer text-white px-3 sm:px-4 py-2 rounded-lg font-semibold hover:from-[#035005] hover:to-[#0D4A9F] transition-all duration-300 text-sm sm:text-base shadow-md hover:shadow-lg"
                   >
                     Rent Now
                   </button>
@@ -149,7 +148,7 @@ const OurServices = () => {
           <div className="flex justify-center items-center pt-4">
             <button
               onClick={handleSeeMore}
-              className="bg-[#3D0F00] cursor-pointer text-white !px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition"
+              className="bg-gradient-to-r from-[#046307] to-[#0F52BA] cursor-pointer text-white px-6 sm:px-8 py-3 rounded-lg font-semibold hover:from-[#035005] hover:to-[#0D4A9F] transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
             >
               See More
             </button>

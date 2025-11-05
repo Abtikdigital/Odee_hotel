@@ -46,7 +46,7 @@ const Partner = () => {
   const marqueePartners = [...partners, ...partners];
 
   return (
-    <section className="flex flex-col items-center py-10 bg-[#FFF5F1] z-[999999] w-full min-h-[200px]">
+    <section className="flex flex-col items-center py-8 sm:py-10 bg-gradient-to-br from-[#046307]/5 via-[#0F52BA]/5 to-[#800020]/5 z-[999999] w-full min-h-[180px] sm:min-h-[200px]">
       <div className="relative w-full overflow-hidden">
         <div
           className="flex items-center partner-marquee"
