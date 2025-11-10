@@ -90,7 +90,7 @@ const OurServices = () => {
   };
 
   return (
-    <section className="section-wrapper bg-premium-section space-y-10 md:space-y-14 border-b-4 border-[#d1b16a]/35 overflow-hidden">
+    <section className="section-wrapper bg-premium-section space-y-10 md:space-y-14 border-b-4 border-[#b76e79]/35 overflow-hidden">
       <div className="relative z-10">
       <div className="text-center space-y-4 max-w-4xl mx-auto">
         <h2 className="heading-2">Our Event's</h2>
@@ -101,7 +101,7 @@ const OurServices = () => {
 
       <section className="space-y-6 md:space-y-8">
         {/* Tabs container */}
-        <div className="relative border-b border-[#f0ddba]/20 shadow-lg/30 rounded-2xl bg-white/5 backdrop-blur-sm">
+        <div className="relative border-b border-[#b76e79]/30 shadow-lg/30 rounded-2xl bg-white/5 backdrop-blur-sm">
           <div className="flex overflow-x-auto whitespace-nowrap scrollbar-hide">
             {tabs?.map((data) => (
               <button
@@ -109,8 +109,8 @@ const OurServices = () => {
                 onClick={() => handleTabClick(data)}
                 className={`flex-1 min-w-fit cursor-pointer font-medium text-sm sm:text-base md:text-lg p-3 sm:p-4 transition-all duration-300 ${
                   activeTab === data
-                    ? "text-[#f0ddba] border-b-4 border-[#d1b16a] font-semibold shadow-xl shadow-[#0f3a2c]/30"
-                    : "text-muted-light hover:text-white/90 hover:border-b-2 hover:border-[#d1b16a]/50"
+                    ? "text-[#b78b28] border-b-4 border-[#b78b28] font-semibold shadow-xl shadow-[#8E4A54]/25"
+                    : "text-muted-light hover:text-white/90 hover:border-b-2 hover:border-[#b76e79]/55"
                 }`}
               >
                 {data}
@@ -130,13 +130,13 @@ const OurServices = () => {
                 {card.title}
               </h3>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
-                <div className="text-lg sm:text-xl font-semibold text-[#f0ddba]">Rs {card.price}/-</div>
+                <div className="text-lg sm:text-xl font-semibold text-[#b78b28]">Rs {card.price}/-</div>
                 <div>
                   <button
                     onClick={toggleOpenDialog}
-                    className="bg-gradient-to-r from-[#0f3a2c] via-[#1c5f45] to-[#d1b16a] cursor-pointer text-white px-4 sm:px-5 py-2.5 rounded-xl font-semibold hover:from-[#154d39] hover:via-[#1c5f45] hover:to-[#f0ddba] transition-all duration-500 text-sm sm:text-base shadow-lg hover:shadow-xl hover:shadow-[#0f3a2c]/40 transform hover:scale-105 border border-[#d1b16a]/45 backdrop-blur-sm"
-                  >
-                    Rent Now
+                    className="bg-gradient-to-r from-[#8E4A54] via-[#B76E79] to-[#F3CCD4] cursor-pointer text-white px-4 sm:px-5 py-2.5 rounded-xl font-semibold hover:from-[#8E4A54] hover:via-[#E8B7C1] hover:to-[#FBEFF2] transition-all duration-500 text-sm sm:text-base shadow-lg hover:shadow-xl hover:shadow-[#8E4A54]/30 transform hover:scale-105 border border-[#b76e79]/45 backdrop-blur-sm"
+                    >
+                    Explore Event
                   </button>
                 </div>
               </div>
@@ -149,7 +149,7 @@ const OurServices = () => {
           <div className="flex justify-center items-center pt-4">
             <button
               onClick={handleSeeMore}
-                    className="bg-gradient-to-r from-[#0f3a2c] via-[#1c5f45] to-[#d1b16a] cursor-pointer text-white px-7 sm:px-9 py-3 rounded-xl font-semibold hover:from-[#154d39] hover:via-[#1c5f45] hover:to-[#f0ddba] transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-[#0f3a2c]/40 text-sm sm:text-base transform hover:scale-105 border border-[#d1b16a]/45 backdrop-blur-sm"
+                    className="bg-gradient-to-r from-[#8E4A54] via-[#B76E79] to-[#F3CCD4] cursor-pointer text-white px-7 sm:px-9 py-3 rounded-xl font-semibold hover:from-[#8E4A54] hover:via-[#E8B7C1] hover:to-[#FBEFF2] transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-[#8E4A54]/30 text-sm sm:text-base transform hover:scale-105 border border-[#b76e79]/45 backdrop-blur-sm"
             >
               See More
             </button>

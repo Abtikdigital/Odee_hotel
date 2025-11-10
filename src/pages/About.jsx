@@ -56,12 +56,12 @@ const About = () => {
             {aboutSection?.map((data, index) => (
               <div
                 key={index}
-                className="space-y-3 sm:space-y-4 p-4 sm:p-6 md:p-7 bg-premium-card rounded-2xl border border-[#d1b16a]/25 shadow-xl hover:shadow-2xl hover:shadow-[#071f16]/35 transition-all duration-500 hover:border-[#f0ddba]/50 hover:-translate-y-1 backdrop-blur-sm"
+                className="space-y-3 sm:space-y-4 p-4 sm:p-6 md:p-7 bg-premium-card rounded-2xl border border-[#d6b98c]/45 shadow-xl hover:shadow-2xl hover:shadow-[#8E4A54]/25 transition-all duration-500 hover:border-[#F3CCD4]/55 hover:-translate-y-1 backdrop-blur-sm"
               >
                 <div className="flex gap-4 sm:gap-6 items-center">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#071f16] via-[#0f3a2c] to-[#d1b16a] rounded-full blur-md opacity-50"></div>
-                    <div className="relative bg-gradient-to-br from-[#071f16] via-[#0f3a2c] to-[#d1b16a] p-2.5 sm:p-3 rounded-full shadow-lg">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#8E4A54] via-[#d6b98c] to-[#F3CCD4] rounded-full blur-md opacity-60"></div>
+                    <div className="relative bg-gradient-to-br from-[#8E4A54] via-[#d6b98c] to-[#F3CCD4] p-2.5 sm:p-3 rounded-full shadow-lg">
                       <data.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" strokeWidth={3} />
                     </div>
                   </div>
@@ -74,7 +74,7 @@ const About = () => {
             ))}
           </div>
           <div className="w-full h-full">
-            <img src={Image1} className="h-full w-full object-cover rounded-2xl shadow-2xl border-4 border-[#d1b16a]/30 hover:border-[#f0ddba]/55 transition-all duration-500 hover:shadow-[0_25px_50px_-12px_rgba(7,31,22,0.55)]" alt="About Us" />
+            <img src={Image1} className="h-full w-full object-cover rounded-2xl shadow-2xl border-4 border-[#d6b98c]/40 hover:border-[#F3CCD4]/55 transition-all duration-500 hover:shadow-[0_25px_50px_-12px_rgba(142,74,84,0.4)]" alt="About Us" />
           </div>
         </section>
       </div>
@@ -94,17 +94,17 @@ const About = () => {
               ?.toUpperCase();
             return (
               <div key={index} className="space-y-4 group">
-                <div className="relative flex flex-col items-center justify-between gap-4 bg-premium-card rounded-2xl p-6 sm:p-7 h-full min-h-[280px] sm:min-h-[320px] shadow-xl hover:shadow-2xl hover:shadow-[#071f16]/35 transition-all duration-500">
-                  <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-full bg-gradient-to-br from-[#071f16] via-[#0f3a2c] to-[#d1b16a] flex items-center justify-center text-white text-3xl sm:text-4xl font-semibold shadow-xl mt-2">
+                <div className="relative flex flex-col items-center justify-between gap-4 bg-premium-card rounded-2xl p-6 sm:p-7 h-full min-h-[280px] sm:min-h-[320px] shadow-xl hover:shadow-2xl hover:shadow-[#8E4A54]/25 transition-all duration-500 border border-[#d6b98c]/35">
+                  <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-full bg-gradient-to-br from-[#8E4A54] via-[#d6b98c] to-[#F3CCD4] flex items-center justify-center text-white text-3xl sm:text-4xl font-semibold shadow-xl mt-2">
                     {initials}
                   </div>
-                  <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[#f0ddba]/40 transition-colors duration-500 pointer-events-none"></div>
+                  <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[#d6b98c]/45 transition-colors duration-500 pointer-events-none"></div>
                 </div>
                 <div className="text-center space-y-2">
                   <h2 className="heading-3 font-serif-elegant">
                     {team?.name}
                   </h2>
-                  <h3 className="text-[#f0ddba] font-3 font-bold text-base sm:text-lg border-t border-[#d1b16a]/30 pt-2 inline-block">
+                  <h3 className="text-[#d6b98c] font-3 font-bold text-base sm:text-lg border-t border-[#d6b98c]/35 pt-2 inline-block">
                     {team?.position}
                   </h3>
                 </div>

@@ -174,7 +174,7 @@ const CustomDatePicker = ({
                 ? "text-gray-300 cursor-not-allowed"
                 : "hover:bg-blue-100 text-gray-700 cursor-pointer"
             }
-            ${isSelected ? "bg-gradient-to-br from-[#071f16] via-[#0f3a2c] to-[#d1b16a] text-white hover:from-[#0f3a2c] hover:via-[#1c5f45] hover:to-[#f0ddba] shadow-lg border border-[#d1b16a]/45" : ""}
+            ${isSelected ? "bg-gradient-to-br from-[#8E4A54] via-[#B76E79] to-[#E8B7C1] text-white hover:from-[#8E4A54] hover:via-[#C98A94] hover:to-[#F3CCD4] shadow-lg border border-[#E8B7C1]/45" : ""}
             ${isToday && !isSelected ? "bg-blue-50 border border-blue-200" : ""}
           `}
         >
@@ -193,8 +193,8 @@ const CustomDatePicker = ({
         onClick={() => setIsOpen(!isOpen)}
         className="relative group cursor-pointer"
       >
-                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-hover:text-[#0f3a2c] transition-colors z-10 pointer-events-none" />
-        <div className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 hover:bg-white hover:border-[#1c5f45]/45 cursor-pointer flex items-center shadow-sm hover:shadow-md">
+                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-hover:text-[#B76E79] transition-colors z-10 pointer-events-none" />
+        <div className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 hover:bg-white hover:border-[#C98A94]/45 cursor-pointer flex items-center shadow-sm hover:shadow-md">
           <span className={`${value ? "text-gray-900" : "text-gray-500"}`}>
             {value ? displayDate(parseDate(value)) : placeholder}
           </span>
@@ -255,7 +255,7 @@ const CustomDatePicker = ({
             <button
               type="button" // FIXED: Explicitly set button type
               onClick={handleTodayClick} // FIXED: Use the new handler
-              className="w-full py-2 text-sm text-[#0f3a2c] hover:bg-gradient-to-r hover:from-[#0f3a2c]/10 hover:via-[#1c5f45]/10 hover:to-[#d1b16a]/10 rounded-lg transition-all duration-300 font-semibold hover:text-[#d1b16a] border border-[#0f3a2c]/20 hover:border-[#1c5f45]/40"
+              className="w-full py-2 text-sm text-[#B76E79] hover:bg-gradient-to-r hover:from-[#B76E79]/10 hover:via-[#C98A94]/10 hover:to-[#E8B7C1]/10 rounded-lg transition-all duration-300 font-semibold hover:text-[#E8B7C1] border border-[#B76E79]/20 hover:border-[#C98A94]/40"
             >
               Today
             </button>
@@ -369,7 +369,7 @@ const Mainlayout = (props) => {
         text:
           response.data?.message ||
           "Thank you! Our concierge will reach out shortly.",
-        confirmButtonColor: "#0f3a2c",
+        confirmButtonColor: "#d6b98c",
       });
 
       handleCloseDialog();
@@ -391,7 +391,7 @@ const Mainlayout = (props) => {
               : ""
           }
         `,
-        confirmButtonColor: "#d1b16a",
+        confirmButtonColor: "#b76e79",
       });
     } finally {
       setIsSubmitting(false);
@@ -406,10 +406,10 @@ const Mainlayout = (props) => {
 
       {/* Modal Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="relative w-full max-w-2xl max-h-[90vh] bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 backdrop-blur-xl border border-[#d1b16a]/20">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="relative w-full max-w-2xl max-h-[90vh] bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 backdrop-blur-xl border border-[#E8B7C1]/30">
             {/* Header */}
-            <div className="relative bg-gradient-to-r from-[#071f16] via-[#0f3a2c] to-[#d1b16a] px-6 py-4 shadow-lg border-b-4 border-[#d1b16a]/35">
+            <div className="relative bg-gradient-to-r from-[#8E4A54] via-[#B76E79] to-[#E8B7C1] px-6 py-4 shadow-lg border-b-4 border-[#E8B7C1]/40">
               <h2 className="text-xl sm:text-2xl font-bold text-white pr-8 font-serif-heading">
                 Plan Your Banquet Event
               </h2>
@@ -439,7 +439,7 @@ const Mainlayout = (props) => {
                   Full Name *
                 </label>
                 <div className="relative group">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#0f3a2c] transition-colors" />
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#B76E79] transition-colors" />
                   <input
                     id="name"
                     {...register("name", {
@@ -449,7 +449,7 @@ const Mainlayout = (props) => {
                         message: "Name must be at least 2 characters",
                       },
                     })}
-                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
+                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 shadow-sm hover:shadow-md focus:shadow-lg"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -476,7 +476,7 @@ const Mainlayout = (props) => {
                     {...register("timeSlot", {
                       required: "Please choose a time slot",
                     })}
-                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
+                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
                   >
                     <option value="" disabled>
                       Select a time slot
@@ -514,7 +514,7 @@ const Mainlayout = (props) => {
                     {...register("venuePreference", {
                       required: "Select a venue preference",
                     })}
-                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
+                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
                   >
                     <option value="" disabled>
                       Choose venue preference
@@ -552,7 +552,7 @@ const Mainlayout = (props) => {
                     {...register("cateringStyle", {
                       required: "Select a catering style",
                     })}
-                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
+                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
                   >
                     <option value="" disabled>
                       Choose catering preference
@@ -584,7 +584,7 @@ const Mainlayout = (props) => {
                   Email Address *
                 </label>
                 <div className="relative group">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d1b16a] transition-colors" />
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#B76E79] transition-colors" />
                   <input
                     id="email"
                     type="email"
@@ -595,7 +595,7 @@ const Mainlayout = (props) => {
                         message: "Please enter a valid email",
                       },
                     })}
-                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
+                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 shadow-sm hover:shadow-md focus:shadow-lg"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -616,7 +616,7 @@ const Mainlayout = (props) => {
                   Phone Number *
                 </label>
                 <div className="relative group">
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d1b16a] transition-colors" />
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#B76E79] transition-colors" />
                   <input
                     id="phone"
                     type="tel"
@@ -627,7 +627,7 @@ const Mainlayout = (props) => {
                         message: "Please enter a valid phone number",
                       },
                     })}
-                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
+                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 shadow-sm hover:shadow-md focus:shadow-lg"
                     placeholder="+91 98765 43210"
                   />
                 </div>
@@ -654,7 +654,7 @@ const Mainlayout = (props) => {
                     {...register("eventType", {
                       required: "Please select your event type",
                     })}
-                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
+                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
                   >
                     <option value="" disabled>
                       Select an event type
@@ -694,7 +694,7 @@ const Mainlayout = (props) => {
                       message: "Event name must be at least 3 characters",
                     },
                   })}
-                  className="w-full h-12 px-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
+                    className="w-full h-12 px-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 shadow-sm hover:shadow-md focus:shadow-lg"
                   placeholder="e.g., Aarav & Siya Reception"
                 />
                 {errors.eventTitle && (
@@ -714,7 +714,7 @@ const Mainlayout = (props) => {
                   Estimated Guest Count *
                 </label>
                 <div className="relative group">
-                  <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d1b16a] transition-colors" />
+                  <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#B76E79] transition-colors" />
                   <input
                     id="persons"
                     type="number"
@@ -725,7 +725,7 @@ const Mainlayout = (props) => {
                       min: { value: 1, message: "At least 1 guest required" },
                       max: { value: 500, message: "Maximum 500 guests allowed" },
                     })}
-                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
+                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 shadow-sm hover:shadow-md focus:shadow-lg"
                     placeholder="150"
                   />
                 </div>
@@ -778,7 +778,7 @@ const Mainlayout = (props) => {
                   Estimated Budget (₹) *
                 </label>
                 <div className="relative group">
-                  <IndianRupee className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d1b16a] transition-colors" />
+                  <IndianRupee className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#B76E79] transition-colors" />
                   <input
                     id="budget"
                     type="number"
@@ -788,7 +788,7 @@ const Mainlayout = (props) => {
                       required: "Budget is required",
                       min: { value: 50000, message: "Minimum budget is ₹50,000" },
                     })}
-                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
+                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 shadow-sm hover:shadow-md focus:shadow-lg"
                     placeholder="150000"
                   />
                 </div>
@@ -812,7 +812,7 @@ const Mainlayout = (props) => {
                   id="decor"
                   {...register("decor")}
                   rows="3"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 resize-none shadow-sm hover:shadow-md focus:shadow-lg"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 resize-none shadow-sm hover:shadow-md focus:shadow-lg"
                   placeholder="Describe colours, themes, or inspirations you’d love for the banquet decor."
                 />
               </div>
@@ -826,13 +826,13 @@ const Mainlayout = (props) => {
                   {servicesOptions.map((service) => (
                     <label
                       key={service}
-                      className="flex items-center gap-2 text-sm text-gray-700 bg-gray-50/80 border border-gray-200 rounded-xl px-3 py-2 hover:border-[#d1b16a]/50 hover:bg-white transition-colors"
+                      className="flex items-center gap-2 text-sm text-gray-700 bg-gray-50/80 border border-gray-200 rounded-xl px-3 py-2 hover:border-[#E8B7C1]/50 hover:bg-white transition-colors"
                     >
                       <input
                         type="checkbox"
                         value={service}
                         {...register("services")}
-                        className="h-4 w-4 rounded border-gray-300 text-[#0f3a2c] focus:ring-[#0f3a2c]"
+                        className="h-4 w-4 rounded border-gray-300 text-[#B76E79] focus:ring-[#B76E79]"
                       />
                       {service}
                     </label>
@@ -850,12 +850,12 @@ const Mainlayout = (props) => {
                   <span className="text-gray-400 font-normal">(Optional)</span>
                 </label>
                 <div className="relative group">
-                  <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-gray-400 group-focus-within:text-[#d1b16a] transition-colors" />
+                  <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-gray-400 group-focus-within:text-[#B76E79] transition-colors" />
                   <textarea
                     id="notes"
                     {...register("notes")}
                     rows="3"
-                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 resize-none shadow-sm hover:shadow-md focus:shadow-lg"
+                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl outline-none focus:border-[#B76E79] focus:ring-4 focus:ring-[#B76E79]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#C98A94]/45 resize-none shadow-sm hover:shadow-md focus:shadow-lg"
                     placeholder="Tell us about entertainment choices, cultural rituals, or bespoke requests..."
                   />
                 </div>
@@ -873,7 +873,7 @@ const Mainlayout = (props) => {
                 </button>
                 <button
                   type="submit"
-                  className="md:flex-1 h-12 px-6 cursor-pointer bg-gradient-to-r from-[#071f16] via-[#0f3a2c] to-[#d1b16a] text-white font-semibold rounded-xl hover:from-[#0f3a2c] hover:via-[#1c5f45] hover:to-[#f0ddba] focus:outline-none focus:ring-4 focus:ring-[#0f3a2c]/30 shadow-xl hover:shadow-2xl hover:shadow-[#0f3a2c]/35 transition-all duration-500 transform hover:scale-[1.02] border-2 border-[#d1b16a]/40 backdrop-blur-sm disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="md:flex-1 h-12 px-6 cursor-pointer bg-gradient-to-r from-[#8E4A54] via-[#B76E79] to-[#E8B7C1] text-white font-semibold rounded-xl hover:from-[#8E4A54] hover:via-[#C98A94] hover:to-[#F3CCD4] focus:outline-none focus:ring-4 focus:ring-[#B76E79]/30 shadow-xl hover:shadow-2xl hover:shadow-[#8E4A54]/35 transition-all duration-500 transform hover:scale-[1.02] border-2 border-[#E8B7C1]/40 backdrop-blur-sm disabled:opacity-60 disabled:cursor-not-allowed"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Submitting..." : "Request Banquet Proposal"}
@@ -887,7 +887,7 @@ const Mainlayout = (props) => {
       {/* Floating Action Button */}
       <button
         onClick={toggleOpenDialog}
-        className="fixed bottom-6 cursor-pointer right-6 bg-gradient-to-r from-[#071f16] via-[#0f3a2c] to-[#d1b16a] text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-[#0f3a2c]/45 hover:shadow-3xl transform hover:scale-110 transition-all duration-300 z-40 font-semibold flex items-center gap-2 border-2 border-[#d1b16a]/40 hover:border-[#f0ddba]"
+        className="fixed bottom-6 cursor-pointer right-6 bg-gradient-to-r from-[#8E4A54] via-[#B76E79] to-[#E8B7C1] text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-[#8E4A54]/45 hover:shadow-3xl transform hover:scale-110 transition-all duration-300 z-40 font-semibold flex items-center gap-2 border-2 border-[#E8B7C1]/45 hover:border-[#F3CCD4]"
       >
         <Calendar size={20} />
         Plan Banquet
