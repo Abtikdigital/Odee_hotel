@@ -141,11 +141,12 @@ const Testimonial = () => {
   };
 
   return (
-    <section className="p-4 sm:p-6 lg:p-10 bg-gradient-to-br from-[#046307]/5 via-[#0F52BA]/5 to-[#800020]/5 space-y-6 md:space-y-12">
+    <section className="section-wrapper bg-premium-section space-y-10 md:space-y-14 border-b-4 border-[#d1b16a]/35 overflow-hidden">
+      <div className="relative z-10 space-y-6">
       <h1 className="heading-2 text-center">
         Trusted by Thousands of Happy Customer
       </h1>
-      <p className="paragraph-1 font-2 text-center text-gray-700 max-w-3xl mx-auto px-4">
+      <p className="paragraph-1 font-2 text-muted-light text-center max-w-3xl mx-auto">
         We are proud to serve families, professionals, and travelers with quality food, catering, and hospitality.
       </p>
 
@@ -157,7 +158,7 @@ const Testimonial = () => {
         >
           {Array.from({ length: totalSlides }).map((_, slideIndex) => (
             <div key={slideIndex} className="w-full flex-shrink-0">
-              <div className={`grid ${getGridCols()} gap-4 sm:gap-6`}>
+              <div className={`grid ${getGridCols()} gap-5 sm:gap-6`}>
                 {testimonialData
                   .slice(
                     slideIndex * itemsPerPage,
@@ -166,10 +167,10 @@ const Testimonial = () => {
                   .map((data, index) => (
                     <div
                       key={slideIndex * itemsPerPage + index}
-                      className="bg-gradient-to-br from-[#800020] to-[#0F52BA] p-4 sm:p-5 md:p-6 rounded-2xl space-y-3 sm:space-y-4 transform transition-all duration-300 hover:shadow-2xl mx-auto w-full max-w-sm sm:max-w-none border border-[#B08D57]/30"
+                      className="bg-gradient-to-br from-[#0f3a2c] via-[#1c5f45] to-[#d1b16a] p-5 sm:p-6 rounded-2xl space-y-3 sm:space-y-4 transform transition-all duration-500 hover:shadow-2xl hover:shadow-[#0f3a2c]/35 mx-auto w-full max-w-md sm:max-w-lg md:max-w-none border border-[#d1b16a]/45 hover:border-[#f0ddba]/60 hover:scale-[1.02] backdrop-blur-sm"
                     >
                       <section className="flex gap-3 sm:gap-4">
-                        <div className="bg-[#B08D57] h-10 w-10 sm:h-12 sm:w-12 rounded-full text-white flex justify-center items-center font-semibold text-sm sm:text-base shadow-lg">
+                        <div className="bg-gradient-to-br from-[#071f16] via-[#0f3a2c] to-[#d1b16a] h-10 w-10 sm:h-12 sm:w-12 rounded-full text-white flex justify-center items-center font-semibold text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all duration-300">
                           {data?.name?.split(" ")[0][0] +
                             data?.name?.split(" ")[1][0]}
                         </div>
@@ -203,8 +204,8 @@ const Testimonial = () => {
               onClick={() => goToSlide(index)}
               className={`cursor-pointer transition-all duration-300 ${
                 index === currentSlide
-                  ? "w-8 sm:w-10 bg-[#B08D57] h-2 sm:h-2.5 rounded-2xl shadow-lg"
-                  : "w-2 sm:w-3 bg-[#046307]/30 h-2 sm:h-3 rounded-full hover:bg-[#046307]/50"
+                  ? "w-8 sm:w-10 bg-gradient-to-r from-[#0f3a2c] via-[#1c5f45] to-[#d1b16a] h-2.5 sm:h-3 rounded-2xl shadow-lg border border-[#f0ddba]/50"
+                  : "w-2 sm:w-3 bg-white/20 h-2 sm:h-3 rounded-full hover:bg-[#f0ddba]/60 hover:scale-125"
               }`}
             ></div>
           ))}
@@ -214,19 +215,20 @@ const Testimonial = () => {
         <section className="flex gap-2 sm:gap-3 order-1 sm:order-2">
           <button
             onClick={prevSlide}
-            className="rounded-full bg-[#046307]/20 p-2 sm:p-2.5 cursor-pointer hover:bg-[#046307]/40 transition-all duration-300 disabled:opacity-50 group border border-[#046307]/30"
+            className="rounded-full bg-white/10 p-2 sm:p-2.5 cursor-pointer hover:bg-white/20 transition-all duration-300 disabled:opacity-50 group border border-[#d1b16a]/35 hover:border-[#f0ddba] hover:scale-110"
             aria-label="Previous slide"
           >
-            <MoveLeft className="text-[#046307] w-4 h-4 sm:w-5 sm:h-5 group-hover:transform group-hover:-translate-x-1 transition-transform duration-200" />
+            <MoveLeft className="text-[#f0ddba] w-4 h-4 sm:w-5 sm:h-5 group-hover:transform group-hover:-translate-x-1 transition-transform duration-200" />
           </button>
           <button
             onClick={nextSlide}
-            className="rounded-full bg-[#046307]/20 p-2 sm:p-2.5 cursor-pointer hover:bg-[#046307]/40 transition-all duration-300 disabled:opacity-50 group border border-[#046307]/30"
+            className="rounded-full bg-white/10 p-2 sm:p-2.5 cursor-pointer hover:bg-white/20 transition-all duration-300 disabled:opacity-50 group border border-[#d1b16a]/35 hover:border-[#f0ddba] hover:scale-110"
             aria-label="Next slide"
           >
-            <MoveRight className="text-[#046307] w-4 h-4 sm:w-5 sm:h-5 group-hover:transform group-hover:translate-x-1 transition-transform duration-200" />
+            <MoveRight className="text-[#f0ddba] w-4 h-4 sm:w-5 sm:h-5 group-hover:transform group-hover:translate-x-1 transition-transform duration-200" />
           </button>
         </section>
+      </div>
       </div>
     </section>
   );

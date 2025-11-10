@@ -1,31 +1,49 @@
 @import "tailwindcss";
 
-/* Royal Jewel Tones Color Variables */
+/* Emerald & Gold Royal Palette */
 :root {
-  --emerald-green: #046307;
-  --royal-blue: #0F52BA;
-  --deep-maroon: #800020;
-  --antique-gold: #B08D57;
+  --primary-emerald: #0f3a2c;
+  --emerald-dark: #09271b;
+  --emerald-deep: #071f16;
+  --emerald-light: #1c5f45;
+  --primary-gold: #d1b16a;
+  --primary-gold-dark: #9e8140;
+  --primary-gold-light: #f0ddba;
+  --gold-soft: #e5ce9a;
+  --gold-muted: #c29b55;
+  --text-light: rgba(236, 242, 236, 0.88);
+  --text-light-muted: rgba(236, 242, 236, 0.68);
+  --text-dark: #1f2c24;
+  --text-muted: #304037;
 }
 
 .heading-1 {
   @apply font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase;
   font-family: "Cinzel", serif;
-  color: var(--deep-maroon);
+  color: var(--primary-gold);
+  text-shadow: 0 4px 12px rgba(176, 141, 87, 0.6), 0 0 30px rgba(4, 99, 7, 0.25), 0 2px 4px rgba(18, 34, 23, 0.35);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
 }
 .heading-2 {
   @apply font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
   font-family: "Cinzel", serif;
-  color: var(--deep-maroon);
+  color: var(--primary-gold);
+  text-shadow: 0 3px 10px rgba(176, 141, 87, 0.55), 0 0 25px rgba(4, 99, 7, 0.25), 0 2px 4px rgba(18, 34, 23, 0.2);
+  letter-spacing: 0.03em;
+  line-height: 1.3;
 }
 .heading-3{
   @apply font-semibold text-xl sm:text-2xl md:text-3xl;
   font-family: "EB Garamond", serif;
-  color: var(--deep-maroon);
+  color: var(--primary-gold);
+  text-shadow: 0 2px 6px rgba(176, 141, 87, 0.45), 0 1px 2px rgba(18, 34, 23, 0.15);
+  letter-spacing: 0.02em;
 }
 .paragraph-1{
   @apply font-medium text-sm sm:text-base md:text-lg;
   font-family: "Inter", sans-serif;
+  color: var(--text-light);
 }
 .font-1 {
   font-family: "Poppins", sans-serif;
@@ -45,21 +63,51 @@
 .font-serif-elegant {
   font-family: "EB Garamond", serif;
 }
+/* Consistent Section Spacing */
+.section-wrapper {
+  @apply py-12 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-16;
+  position: relative;
+}
+
+/* Primary Button */
 .coffe-button {
-  @apply bg-[#046307] text-white transition-all duration-300 p-2.5 sm:p-3 px-4 sm:px-6 rounded-lg cursor-pointer hover:bg-[#035005] hover:shadow-lg;
+  @apply bg-gradient-to-r from-[#0f3a2c] via-[#1c5f45] to-[#d1b16a] text-white transition-all duration-300 p-2.5 sm:p-3 px-5 sm:px-7 rounded-xl cursor-pointer shadow-xl hover:shadow-2xl hover:shadow-[#0f3a2c]/40 transform hover:scale-105 border border-[#d1b16a]/40 backdrop-blur-sm;
   font-family: "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
 }
+.coffe-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+.coffe-button:hover::before {
+  left: 100%;
+}
+/* Secondary Button */
 .light-coffe-button {
-  @apply bg-[#046307]/15 transition-all duration-300 text-[#046307] p-2.5 sm:p-3 px-4 sm:px-6 rounded-lg cursor-pointer hover:bg-[#046307]/30 hover:text-white border border-[#046307]/30;
+  @apply bg-[#0f3a2c]/15 transition-all duration-300 text-[#f0ddba] p-2.5 sm:p-3 px-5 sm:px-7 rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#0f3a2c] hover:via-[#1c5f45] hover:to-[#d1b16a] hover:text-white border-2 border-[#d1b16a]/60 hover:border-[#f0ddba] shadow-lg hover:shadow-xl hover:shadow-[#0f3a2c]/35 transform hover:scale-105 backdrop-blur-sm;
   font-family: "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
+/* White Button with Gold Accent */
 .white-button {
-  @apply bg-[#FFFFFF] px-4 sm:px-6 text-[#046307] transition-all duration-300 p-2.5 sm:p-3 rounded-lg cursor-pointer hover:bg-[#B08D57] hover:text-white border border-[#046307]/20;
+  @apply bg-white px-5 sm:px-7 text-[#0f3a2c] transition-all duration-300 p-2.5 sm:p-3 rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#0f3a2c] hover:via-[#1c5f45] hover:to-[#d1b16a] hover:text-white border-2 border-[#d1b16a]/70 shadow-lg hover:shadow-xl hover:shadow-[#0f3a2c]/30 transform hover:scale-105 backdrop-blur-sm;
   font-family: "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .footer-icon {
-  @apply bg-white rounded-full text-[#1A202C] p-1.5 cursor-pointer hover:text-[#046307] hover:bg-[#B08D57] transition-all duration-300;
+  @apply bg-white rounded-full text-[#0f3a2c] p-1.5 cursor-pointer hover:text-white hover:bg-gradient-to-br hover:from-[#0f3a2c] hover:via-[#1c5f45] hover:to-[#d1b16a] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-110;
 }
 
 /* Hide scrollbar for better UX */
@@ -69,4 +117,46 @@
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Premium Card Surface */
+.bg-premium-card {
+  background:
+    linear-gradient(145deg, rgba(15, 58, 44, 0.92) 0%, rgba(11, 47, 35, 0.96) 55%, rgba(7, 31, 22, 0.98) 100%);
+  border: 1px solid rgba(209, 177, 106, 0.22);
+  box-shadow: 0 18px 36px rgba(9, 39, 27, 0.32);
+  backdrop-filter: blur(18px);
+  transition: all 0.4s ease;
+}
+.bg-premium-card:hover {
+  border-color: rgba(209, 177, 106, 0.45);
+  box-shadow: 0 24px 44px rgba(7, 31, 22, 0.42);
+  transform: translateY(-6px);
+}
+
+/* Section Background */
+.bg-premium-section {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(209, 177, 106, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(28, 95, 69, 0.28) 0%, transparent 55%),
+    linear-gradient(135deg, rgba(7, 31, 22, 0.98) 0%, rgba(9, 39, 27, 0.95) 45%, rgba(15, 58, 44, 0.92) 100%);
+  position: relative;
+}
+.bg-premium-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(120deg, rgba(209, 177, 106, 0.08), transparent),
+    radial-gradient(circle at 65% 35%, rgba(28, 95, 69, 0.18) 0%, transparent 55%);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Muted text helper */
+.text-muted-light {
+  color: var(--text-light-muted);
 }

@@ -90,26 +90,27 @@ const OurServices = () => {
   };
 
   return (
-    <section className="bg-gradient-to-br from-[#046307]/5 via-[#0F52BA]/5 to-[#800020]/5 p-4 sm:p-6 md:p-10 space-y-6 md:space-y-12">
-      <div className="text-center space-y-3 px-4">
+    <section className="section-wrapper bg-premium-section space-y-10 md:space-y-14 border-b-4 border-[#d1b16a]/35 overflow-hidden">
+      <div className="relative z-10">
+      <div className="text-center space-y-4 max-w-4xl mx-auto">
         <h2 className="heading-2">Our Event's</h2>
-        <p className="text-base sm:text-lg md:text-xl text-gray-700 font-2 max-w-3xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl paragraph-1 font-2 text-muted-light">
           Discover our exclusive events and celebrations designed for luxury and elegance.
         </p>
       </div>
 
-      <section className="space-y-4 md:space-y-6">
+      <section className="space-y-6 md:space-y-8">
         {/* Tabs container */}
-        <div className="relative border-b-2 border-[#B08D57]/30">
+        <div className="relative border-b border-[#f0ddba]/20 shadow-lg/30 rounded-2xl bg-white/5 backdrop-blur-sm">
           <div className="flex overflow-x-auto whitespace-nowrap scrollbar-hide">
             {tabs?.map((data) => (
               <button
                 key={data}
                 onClick={() => handleTabClick(data)}
-                className={`flex-1 min-w-fit cursor-pointer font-medium text-sm sm:text-base md:text-lg p-3 sm:p-4 transition-colors duration-300 ${
+                className={`flex-1 min-w-fit cursor-pointer font-medium text-sm sm:text-base md:text-lg p-3 sm:p-4 transition-all duration-300 ${
                   activeTab === data
-                    ? "text-[#046307] border-b-2 border-[#046307] font-semibold"
-                    : "text-gray-700 hover:text-[#046307]"
+                    ? "text-[#f0ddba] border-b-4 border-[#d1b16a] font-semibold shadow-xl shadow-[#0f3a2c]/30"
+                    : "text-muted-light hover:text-white/90 hover:border-b-2 hover:border-[#d1b16a]/50"
                 }`}
               >
                 {data}
@@ -119,21 +120,21 @@ const OurServices = () => {
         </div>
 
         {/* Cards Grid - now shows a "slice" of the filtered cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {filteredCards?.slice(0, visibleItems).map((card) => (
             <div
               key={card.id}
-              className="h-auto min-h-[280px] sm:min-h-[320px] md:min-h-[360px] bg-gradient-to-br from-white to-[#046307]/5 rounded-lg flex flex-col justify-between p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-[#B08D57]/20"
+              className="h-auto min-h-[280px] sm:min-h-[320px] md:min-h-[360px] bg-premium-card rounded-2xl flex flex-col justify-between p-5 sm:p-6 transition-all duration-500 group"
             >
-              <h3 className="font-serif-elegant font-bold text-xl sm:text-2xl text-[#800020] mb-4">
+              <h3 className="font-serif-elegant font-bold text-xl sm:text-2xl heading-3 mb-4">
                 {card.title}
               </h3>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
-                <div className="text-lg sm:text-xl font-semibold text-[#0F52BA]">Rs {card.price}/-</div>
+                <div className="text-lg sm:text-xl font-semibold text-[#f0ddba]">Rs {card.price}/-</div>
                 <div>
                   <button
                     onClick={toggleOpenDialog}
-                    className="bg-gradient-to-r from-[#046307] to-[#0F52BA] cursor-pointer text-white px-3 sm:px-4 py-2 rounded-lg font-semibold hover:from-[#035005] hover:to-[#0D4A9F] transition-all duration-300 text-sm sm:text-base shadow-md hover:shadow-lg"
+                    className="bg-gradient-to-r from-[#0f3a2c] via-[#1c5f45] to-[#d1b16a] cursor-pointer text-white px-4 sm:px-5 py-2.5 rounded-xl font-semibold hover:from-[#154d39] hover:via-[#1c5f45] hover:to-[#f0ddba] transition-all duration-500 text-sm sm:text-base shadow-lg hover:shadow-xl hover:shadow-[#0f3a2c]/40 transform hover:scale-105 border border-[#d1b16a]/45 backdrop-blur-sm"
                   >
                     Rent Now
                   </button>
@@ -148,13 +149,14 @@ const OurServices = () => {
           <div className="flex justify-center items-center pt-4">
             <button
               onClick={handleSeeMore}
-              className="bg-gradient-to-r from-[#046307] to-[#0F52BA] cursor-pointer text-white px-6 sm:px-8 py-3 rounded-lg font-semibold hover:from-[#035005] hover:to-[#0D4A9F] transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
+                    className="bg-gradient-to-r from-[#0f3a2c] via-[#1c5f45] to-[#d1b16a] cursor-pointer text-white px-7 sm:px-9 py-3 rounded-xl font-semibold hover:from-[#154d39] hover:via-[#1c5f45] hover:to-[#f0ddba] transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-[#0f3a2c]/40 text-sm sm:text-base transform hover:scale-105 border border-[#d1b16a]/45 backdrop-blur-sm"
             >
               See More
             </button>
           </div>
         )}
       </section>
+      </div>
     </section>
   );
 };

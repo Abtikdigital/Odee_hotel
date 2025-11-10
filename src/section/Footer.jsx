@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <section className="bg-gradient-to-br from-[#046307] via-[#0F52BA] to-[#800020] p-4 sm:p-6 md:p-10 flex flex-col md:flex-row gap-8 sm:gap-10 md:gap-20 md:items-start">
+      <section className="bg-gradient-to-br from-[#071f16] via-[#0f3a2c] to-[#d1b16a] p-6 sm:p-8 md:p-12 flex flex-col md:flex-row gap-10 sm:gap-12 md:gap-20 md:items-start border-t-4 border-[#d1b16a]/35 backdrop-blur-sm shadow-2xl">
         {/* Left side - Logo and Socials */}
         <div className="space-y-4 sm:space-y-6 flex-shrink-0 md:w-1/3">
           <div>
             <img src={WhiteLogo} alt="Logo" className="h-20 sm:h-24 md:h-28" />
           </div>
-          <h2 className="font-2 text-white max-w-sm text-sm sm:text-base md:text-lg">
+          <h2 className="font-2 text-white/80 max-w-sm text-sm sm:text-base md:text-lg">
             Our vision is to provide convenience and help increase your sales
             business.
           </h2>
@@ -41,31 +41,31 @@ const Footer = () => {
           <ul className="flex flex-col space-y-2 text-white text-sm sm:text-base">
             <Link
               to="/"
-              className="block hover:underline hover:text-[#B08D57] transition-all duration-300"
+              className="block hover:underline hover:text-[#f0ddba] transition-all duration-300"
             >
               Home
             </Link>
             <Link
               to="/about"
-              className="block hover:underline hover:text-[#B08D57] transition-all duration-300"
+              className="block hover:underline hover:text-[#f0ddba] transition-all duration-300"
             >
               About
             </Link>
             <Link
               to="/services"
-              className="block hover:underline hover:text-[#B08D57] transition-all duration-300"
+              className="block hover:underline hover:text-[#f0ddba] transition-all duration-300"
             >
               Services
             </Link>
             <Link
               to="/events"
-              className="block hover:underline hover:text-[#B08D57] transition-all duration-300"
+              className="block hover:underline hover:text-[#f0ddba] transition-all duration-300"
             >
               Events
             </Link>
             <Link
               to="/contact"
-              className="block hover:underline hover:text-[#B08D57] transition-all duration-300"
+              className="block hover:underline hover:text-[#f0ddba] transition-all duration-300"
             >
               Contact
             </Link>

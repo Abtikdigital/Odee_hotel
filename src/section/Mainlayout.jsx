@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import {
   User,
@@ -172,7 +174,7 @@ const CustomDatePicker = ({
                 ? "text-gray-300 cursor-not-allowed"
                 : "hover:bg-blue-100 text-gray-700 cursor-pointer"
             }
-            ${isSelected ? "bg-[#3D0F00] text-white hover:bg-[#4D1F10]" : ""}
+            ${isSelected ? "bg-gradient-to-br from-[#071f16] via-[#0f3a2c] to-[#d1b16a] text-white hover:from-[#0f3a2c] hover:via-[#1c5f45] hover:to-[#f0ddba] shadow-lg border border-[#d1b16a]/45" : ""}
             ${isToday && !isSelected ? "bg-blue-50 border border-blue-200" : ""}
           `}
         >
@@ -191,8 +193,8 @@ const CustomDatePicker = ({
         onClick={() => setIsOpen(!isOpen)}
         className="relative group cursor-pointer"
       >
-        <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-hover:text-[#3D0F00] transition-colors z-10 pointer-events-none" />
-        <div className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#3D0F00] focus:ring-4 focus:ring-[#3D0F00]/10 transition-all duration-200 bg-gray-50/50 hover:bg-white cursor-pointer flex items-center">
+                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-hover:text-[#0f3a2c] transition-colors z-10 pointer-events-none" />
+        <div className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 hover:bg-white hover:border-[#1c5f45]/45 cursor-pointer flex items-center shadow-sm hover:shadow-md">
           <span className={`${value ? "text-gray-900" : "text-gray-500"}`}>
             {value ? displayDate(parseDate(value)) : placeholder}
           </span>
@@ -253,7 +255,7 @@ const CustomDatePicker = ({
             <button
               type="button" // FIXED: Explicitly set button type
               onClick={handleTodayClick} // FIXED: Use the new handler
-              className="w-full py-2 text-sm text-[#3D0F00] hover:bg-gray-50 rounded-lg transition-colors"
+              className="w-full py-2 text-sm text-[#0f3a2c] hover:bg-gradient-to-r hover:from-[#0f3a2c]/10 hover:via-[#1c5f45]/10 hover:to-[#d1b16a]/10 rounded-lg transition-all duration-300 font-semibold hover:text-[#d1b16a] border border-[#0f3a2c]/20 hover:border-[#1c5f45]/40"
             >
               Today
             </button>
@@ -278,6 +280,49 @@ const Mainlayout = (props) => {
   const disp = useDispatch();
   const { isOpen } = useSelector((state) => state);
 
+  const eventTypes = [
+    "Wedding Reception",
+    "Corporate Gala",
+    "Birthday Celebration",
+    "Engagement Ceremony",
+    "Anniversary Party",
+    "Other",
+  ];
+
+  const timeSlots = [
+    "Morning (8am - 12pm)",
+    "Afternoon (12pm - 4pm)",
+    "Evening (4pm - 8pm)",
+    "Late Evening (8pm onwards)",
+  ];
+
+  const venueOptions = [
+    "Indoor Banquet Hall",
+    "Outdoor Lawn",
+    "Poolside",
+    "Rooftop",
+    "Not Sure Yet",
+  ];
+
+  const cateringStyles = [
+    "Plated Service",
+    "Buffet Spread",
+    "Live Food Counters",
+    "Cocktail & Canapés",
+    "Fusion Menu",
+  ];
+
+  const servicesOptions = [
+    "Stage & Lighting",
+    "Live Entertainment",
+    "Photography & Videography",
+    "Decor & Florals",
+    "Valet Parking",
+    "Guest Accommodation",
+  ];
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   // Watch the date value for the custom date picker
   const selectedDate = watch("date");
 
@@ -290,10 +335,67 @@ const Mainlayout = (props) => {
     reset(); // reset form when closing
   };
 
-  const onSubmit = (data) => {
-    console.log("Form Submitted:", data);
-    alert("Booking Request Submitted Successfully!");
-    handleCloseDialog();
+  const onSubmit = async (data) => {
+    const services = Array.isArray(data.services)
+      ? data.services
+      : data.services
+      ? [data.services]
+      : [];
+
+    const payload = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      eventType: data.eventType,
+      eventTitle: data.eventTitle,
+      guestCount: Number(data.persons),
+      eventDate: data.date,
+      timeSlot: data.timeSlot,
+      venuePreference: data.venuePreference,
+      cateringStyle: data.cateringStyle,
+      budget: Number(data.budget),
+      decor: data.decor || "",
+      services,
+      notes: data.notes || "",
+    };
+
+    try {
+      setIsSubmitting(true);
+      const response = await axios.post("/api/banquet", payload);
+
+      await Swal.fire({
+        icon: "success",
+        title: "Proposal Requested",
+        text:
+          response.data?.message ||
+          "Thank you! Our concierge will reach out shortly.",
+        confirmButtonColor: "#0f3a2c",
+      });
+
+      handleCloseDialog();
+    } catch (error) {
+      const apiMessage =
+        error.response?.data?.message || "Unable to submit your request.";
+      const apiDetails = error.response?.data?.details;
+
+      await Swal.fire({
+        icon: "error",
+        title: "Submission Failed",
+        html: `
+          <p style="margin:0 0 8px;">${apiMessage}</p>
+          ${
+            apiDetails
+              ? `<ul style="text-align:left;padding-left:20px;margin:0;">
+                  ${apiDetails.map((item) => `<li>${item}</li>`).join("")}
+                </ul>`
+              : ""
+          }
+        `,
+        confirmButtonColor: "#d1b16a",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -305,18 +407,18 @@ const Mainlayout = (props) => {
       {/* Modal Overlay */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="relative w-full max-w-md max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+          <div className="relative w-full max-w-2xl max-h-[90vh] bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 backdrop-blur-xl border border-[#d1b16a]/20">
             {/* Header */}
-            <div className="relative bg-gradient-to-r from-[#3D0F00] to-[#5D1F10] px-6 py-4">
-              <h2 className="text-xl font-bold text-white pr-8">
-                Book Your Experience
+            <div className="relative bg-gradient-to-r from-[#071f16] via-[#0f3a2c] to-[#d1b16a] px-6 py-4 shadow-lg border-b-4 border-[#d1b16a]/35">
+              <h2 className="text-xl sm:text-2xl font-bold text-white pr-8 font-serif-heading">
+                Plan Your Banquet Event
               </h2>
-              <p className="text-orange-100 text-sm mt-1">
-                Fill in the details below
+              <p className="text-white/90 text-sm mt-1 font-2">
+                Share your celebration details and our concierge will curate a bespoke experience.
               </p>
               <button
                 onClick={handleCloseDialog}
-                className="absolute top-4 cursor-pointer right-4 p-2 rounded-lg bg-white/20 hover:bg-white/30 text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="absolute top-4 cursor-pointer right-4 p-2 rounded-lg bg-white/20 hover:bg-white/30 text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 hover:scale-110"
                 aria-label="Close dialog"
               >
                 <X size={18} />
@@ -337,7 +439,7 @@ const Mainlayout = (props) => {
                   Full Name *
                 </label>
                 <div className="relative group">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#3D0F00] transition-colors" />
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#0f3a2c] transition-colors" />
                   <input
                     id="name"
                     {...register("name", {
@@ -347,7 +449,7 @@ const Mainlayout = (props) => {
                         message: "Name must be at least 2 characters",
                       },
                     })}
-                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#3D0F00] focus:ring-4 focus:ring-[#3D0F00]/10 transition-all duration-200 bg-gray-50/50 focus:bg-white"
+                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -355,6 +457,120 @@ const Mainlayout = (props) => {
                   <p className="text-red-500 text-xs font-medium flex items-center gap-1">
                     <span className="w-1 h-1 bg-red-500 rounded-full"></span>
                     {errors.name.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Preferred Time Slot */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="timeSlot"
+                  className="block text-sm font-semibold text-gray-700"
+                >
+                  Preferred Time Slot *
+                </label>
+                <div className="relative">
+                  <select
+                    id="timeSlot"
+                    defaultValue=""
+                    {...register("timeSlot", {
+                      required: "Please choose a time slot",
+                    })}
+                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
+                  >
+                    <option value="" disabled>
+                      Select a time slot
+                    </option>
+                    {timeSlots.map((slot) => (
+                      <option key={slot} value={slot}>
+                        {slot}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">
+                    ▾
+                  </span>
+                </div>
+                {errors.timeSlot && (
+                  <p className="text-red-500 text-xs font-medium flex items-center gap-1">
+                    <span className="w-1 h-1 bg-red-500 rounded-full"></span>
+                    {errors.timeSlot.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Venue Preference */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="venuePreference"
+                  className="block text-sm font-semibold text-gray-700"
+                >
+                  Venue Preference *
+                </label>
+                <div className="relative">
+                  <select
+                    id="venuePreference"
+                    defaultValue=""
+                    {...register("venuePreference", {
+                      required: "Select a venue preference",
+                    })}
+                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
+                  >
+                    <option value="" disabled>
+                      Choose venue preference
+                    </option>
+                    {venueOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">
+                    ▾
+                  </span>
+                </div>
+                {errors.venuePreference && (
+                  <p className="text-red-500 text-xs font-medium flex items-center gap-1">
+                    <span className="w-1 h-1 bg-red-500 rounded-full"></span>
+                    {errors.venuePreference.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Catering Style */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="cateringStyle"
+                  className="block text-sm font-semibold text-gray-700"
+                >
+                  Preferred Catering Style *
+                </label>
+                <div className="relative">
+                  <select
+                    id="cateringStyle"
+                    defaultValue=""
+                    {...register("cateringStyle", {
+                      required: "Select a catering style",
+                    })}
+                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
+                  >
+                    <option value="" disabled>
+                      Choose catering preference
+                    </option>
+                    {cateringStyles.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">
+                    ▾
+                  </span>
+                </div>
+                {errors.cateringStyle && (
+                  <p className="text-red-500 text-xs font-medium flex items-center gap-1">
+                    <span className="w-1 h-1 bg-red-500 rounded-full"></span>
+                    {errors.cateringStyle.message}
                   </p>
                 )}
               </div>
@@ -368,7 +584,7 @@ const Mainlayout = (props) => {
                   Email Address *
                 </label>
                 <div className="relative group">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#3D0F00] transition-colors" />
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d1b16a] transition-colors" />
                   <input
                     id="email"
                     type="email"
@@ -379,7 +595,7 @@ const Mainlayout = (props) => {
                         message: "Please enter a valid email",
                       },
                     })}
-                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#3D0F00] focus:ring-4 focus:ring-[#3D0F00]/10 transition-all duration-200 bg-gray-50/50 focus:bg-white"
+                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -400,7 +616,7 @@ const Mainlayout = (props) => {
                   Phone Number *
                 </label>
                 <div className="relative group">
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#3D0F00] transition-colors" />
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d1b16a] transition-colors" />
                   <input
                     id="phone"
                     type="tel"
@@ -411,8 +627,8 @@ const Mainlayout = (props) => {
                         message: "Please enter a valid phone number",
                       },
                     })}
-                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#3D0F00] focus:ring-4 focus:ring-[#3D0F00]/10 transition-all duration-200 bg-gray-50/50 focus:bg-white"
-                    placeholder="+1 (555) 000-0000"
+                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
+                    placeholder="+91 98765 43210"
                   />
                 </div>
                 {errors.phone && (
@@ -423,28 +639,94 @@ const Mainlayout = (props) => {
                 )}
               </div>
 
+              {/* Event Type */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="eventType"
+                  className="block text-sm font-semibold text-gray-700"
+                >
+                  Event Type *
+                </label>
+                <div className="relative">
+                  <select
+                    id="eventType"
+                    defaultValue=""
+                    {...register("eventType", {
+                      required: "Please select your event type",
+                    })}
+                    className="w-full h-12 pl-4 pr-10 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg appearance-none"
+                  >
+                    <option value="" disabled>
+                      Select an event type
+                    </option>
+                    {eventTypes.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">
+                    ▾
+                  </span>
+                </div>
+                {errors.eventType && (
+                  <p className="text-red-500 text-xs font-medium flex items-center gap-1">
+                    <span className="w-1 h-1 bg-red-500 rounded-full"></span>
+                    {errors.eventType.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Event Name */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="eventTitle"
+                  className="block text-sm font-semibold text-gray-700"
+                >
+                  Event Name / Occasion *
+                </label>
+                <input
+                  id="eventTitle"
+                  {...register("eventTitle", {
+                    required: "Please provide the event name or occasion",
+                    minLength: {
+                      value: 3,
+                      message: "Event name must be at least 3 characters",
+                    },
+                  })}
+                  className="w-full h-12 px-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
+                  placeholder="e.g., Aarav & Siya Reception"
+                />
+                {errors.eventTitle && (
+                  <p className="text-red-500 text-xs font-medium flex items-center gap-1">
+                    <span className="w-1 h-1 bg-red-500 rounded-full"></span>
+                    {errors.eventTitle.message}
+                  </p>
+                )}
+              </div>
+
               {/* Number of Persons */}
               <div className="space-y-2">
                 <label
                   htmlFor="persons"
                   className="block text-sm font-semibold text-gray-700"
                 >
-                  Number of Guests *
+                  Estimated Guest Count *
                 </label>
                 <div className="relative group">
-                  <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#3D0F00] transition-colors" />
+                  <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d1b16a] transition-colors" />
                   <input
                     id="persons"
                     type="number"
                     min="1"
-                    max="20"
+                    max="500"
                     {...register("persons", {
                       required: "Number of guests is required",
                       min: { value: 1, message: "At least 1 guest required" },
-                      max: { value: 20, message: "Maximum 20 guests allowed" },
+                      max: { value: 500, message: "Maximum 500 guests allowed" },
                     })}
-                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#3D0F00] focus:ring-4 focus:ring-[#3D0F00]/10 transition-all duration-200 bg-gray-50/50 focus:bg-white"
-                    placeholder="1"
+                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
+                    placeholder="150"
                   />
                 </div>
                 {errors.persons && (
@@ -493,21 +775,21 @@ const Mainlayout = (props) => {
                   htmlFor="budget"
                   className="block text-sm font-semibold text-gray-700"
                 >
-                  Budget (Indian Rupee) *
+                  Estimated Budget (₹) *
                 </label>
                 <div className="relative group">
-                  <IndianRupee className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#3D0F00] transition-colors" />
+                  <IndianRupee className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#d1b16a] transition-colors" />
                   <input
                     id="budget"
                     type="number"
-                    min="50"
-                    step="10"
+                    min="50000"
+                    step="1000"
                     {...register("budget", {
                       required: "Budget is required",
-                      min: { value: 50, message: "Minimum budget is $50" },
+                      min: { value: 50000, message: "Minimum budget is ₹50,000" },
                     })}
-                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#3D0F00] focus:ring-4 focus:ring-[#3D0F00]/10 transition-all duration-200 bg-gray-50/50 focus:bg-white"
-                    placeholder="500"
+                    className="w-full h-12 pl-12 pr-4 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 shadow-sm hover:shadow-md focus:shadow-lg"
+                    placeholder="150000"
                   />
                 </div>
                 {errors.budget && (
@@ -518,23 +800,63 @@ const Mainlayout = (props) => {
                 )}
               </div>
 
-              {/* Special Requests - Optional */}
+              {/* Decor / Theme Vision */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="decor"
+                  className="block text-sm font-semibold text-gray-700"
+                >
+                  Decor & Theme Vision
+                </label>
+                <textarea
+                  id="decor"
+                  {...register("decor")}
+                  rows="3"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 resize-none shadow-sm hover:shadow-md focus:shadow-lg"
+                  placeholder="Describe colours, themes, or inspirations you’d love for the banquet decor."
+                />
+              </div>
+
+              {/* Additional Services */}
+              <div className="space-y-2">
+                <span className="block text-sm font-semibold text-gray-700">
+                  Additional Services
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {servicesOptions.map((service) => (
+                    <label
+                      key={service}
+                      className="flex items-center gap-2 text-sm text-gray-700 bg-gray-50/80 border border-gray-200 rounded-xl px-3 py-2 hover:border-[#d1b16a]/50 hover:bg-white transition-colors"
+                    >
+                      <input
+                        type="checkbox"
+                        value={service}
+                        {...register("services")}
+                        className="h-4 w-4 rounded border-gray-300 text-[#0f3a2c] focus:ring-[#0f3a2c]"
+                      />
+                      {service}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Additional Notes */}
               <div className="space-y-2">
                 <label
                   htmlFor="notes"
                   className="block text-sm font-semibold text-gray-700"
                 >
-                  Special Requests{" "}
+                  Additional Notes{" "}
                   <span className="text-gray-400 font-normal">(Optional)</span>
                 </label>
                 <div className="relative group">
-                  <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-gray-400 group-focus-within:text-[#3D0F00] transition-colors" />
+                  <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-gray-400 group-focus-within:text-[#d1b16a] transition-colors" />
                   <textarea
                     id="notes"
                     {...register("notes")}
                     rows="3"
-                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl outline-none focus:border-[#3D0F00] focus:ring-4 focus:ring-[#3D0F00]/10 transition-all duration-200 bg-gray-50/50 focus:bg-white resize-none"
-                    placeholder="Any special requirements or preferences..."
+                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl outline-none focus:border-[#0f3a2c] focus:ring-4 focus:ring-[#0f3a2c]/20 transition-all duration-300 bg-gray-50/50 focus:bg-white hover:border-[#1c5f45]/45 resize-none shadow-sm hover:shadow-md focus:shadow-lg"
+                    placeholder="Tell us about entertainment choices, cultural rituals, or bespoke requests..."
                   />
                 </div>
               </div>
@@ -544,15 +866,17 @@ const Mainlayout = (props) => {
                 <button
                   type="button"
                   onClick={handleCloseDialog}
-                  className="md:flex-1 h-12 px-6 border-2 cursor-pointer border-gray-200 rounded-xl text-gray-700 font-semibold hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 transition-all duration-200"
+                  className="md:flex-1 h-12 px-6 border-2 cursor-pointer border-gray-200 rounded-xl text-gray-700 font-semibold hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-60"
+                  disabled={isSubmitting}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="md:flex-1 h-12 px-6 cursor-pointer bg-gradient-to-r from-[#3D0F00] to-[#5D1F10] text-white font-semibold rounded-xl hover:from-[#4D1F10] hover:to-[#6D2F20] focus:outline-none focus:ring-4 focus:ring-[#3D0F00]/30 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02]"
+                  className="md:flex-1 h-12 px-6 cursor-pointer bg-gradient-to-r from-[#071f16] via-[#0f3a2c] to-[#d1b16a] text-white font-semibold rounded-xl hover:from-[#0f3a2c] hover:via-[#1c5f45] hover:to-[#f0ddba] focus:outline-none focus:ring-4 focus:ring-[#0f3a2c]/30 shadow-xl hover:shadow-2xl hover:shadow-[#0f3a2c]/35 transition-all duration-500 transform hover:scale-[1.02] border-2 border-[#d1b16a]/40 backdrop-blur-sm disabled:opacity-60 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
                 >
-                  Submit Request
+                  {isSubmitting ? "Submitting..." : "Request Banquet Proposal"}
                 </button>
               </div>
             </form>
@@ -563,10 +887,10 @@ const Mainlayout = (props) => {
       {/* Floating Action Button */}
       <button
         onClick={toggleOpenDialog}
-        className="fixed bottom-6 cursor-pointer right-6 bg-gradient-to-r from-[#3D0F00] to-[#5D1F10] text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 z-40 font-semibold flex items-center gap-2"
+        className="fixed bottom-6 cursor-pointer right-6 bg-gradient-to-r from-[#071f16] via-[#0f3a2c] to-[#d1b16a] text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-[#0f3a2c]/45 hover:shadow-3xl transform hover:scale-110 transition-all duration-300 z-40 font-semibold flex items-center gap-2 border-2 border-[#d1b16a]/40 hover:border-[#f0ddba]"
       >
         <Calendar size={20} />
-        Book Now
+        Plan Banquet
       </button>
     </>
   );
