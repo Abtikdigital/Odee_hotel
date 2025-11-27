@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <section className="bg-gradient-to-b from-[#1B0F09] via-[#2C1A12] to-[#4A2A1B] p-6 sm:p-8 md:p-10 lg:p-12 space-y-8 sm:space-y-10 md:space-y-12 border-t-2 border-[#D4A056]/40 relative overflow-hidden text-[#F8F2EA]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,160,86,0.18)_0%,transparent_60%)] pointer-events-none"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_100%,rgba(178,139,91,0.12)_0%,transparent_50%)] pointer-events-none"></div>
       <div className="relative z-10 space-y-10 sm:space-y-12 max-w-[1920px] mx-auto">
       <div className="flex flex-col md:flex-row gap-8 sm:gap-10 md:gap-16 lg:gap-20 md:items-start relative z-10">
         {/* Left side - Logo and Socials */}
