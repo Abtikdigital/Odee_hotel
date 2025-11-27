@@ -1,43 +1,52 @@
 import { MapPin, Calendar, CarFront } from "lucide-react";
+import Image1 from "../assets/AboutUs/Image1.png";
 
 const AboutUs = () => {
   return (
-    <section className="section-wrapper bg-premium-section space-y-10 md:space-y-14 border-b-4 border-[#b76e79]/35 overflow-hidden">
-      <div className="relative z-10 max-w-6xl mx-auto space-y-6 md:space-y-8">
-      <h2 className="heading-2 text-center">About Us</h2>
-      <p className="text-base sm:text-lg md:text-xl text-center font-2 paragraph-1 text-muted-light max-w-4xl mx-auto">
-       We provide authentic cuisines, catering, and dining services with comfort, taste, and care.
-      </p>
+    <section className="section-wrapper bg-premium-section space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 border-b border-[#D4A056]/30 overflow-hidden premium-fade-in">
+      <div className="relative z-20 max-w-6xl mx-auto space-y-6 sm:space-y-8 md:space-y-10">
+      <div className="text-center space-y-4 sm:space-y-5 md:space-y-6">
+        <div className="flex justify-center">
+          <div className="premium-badge">
+            <span>OUR STORY</span>
+          </div>
+        </div>
+        <h2 className="heading-2 text-center">About Ode Hotel &amp; Resort Pvt. Limited</h2>
+        <p className="paragraph-1 text-center font-2 text-muted-light max-w-4xl mx-auto leading-relaxed">
+          For more than a decade we have hosted weddings, milestone birthdays, corporate retreats, and relaxed family stays. Every experience is crafted in-house—from menu tastings and décor sourcing to concierge travel support—so guests interact with one dedicated Ode team from planning to farewell.
+        </p>
+      </div>
 
-      <div className="relative flex flex-col lg:flex-row gap-8 sm:gap-10 md:gap-12">
+      <div className="relative flex flex-col lg:flex-row gap-6 sm:gap-8 md:gap-10 lg:gap-12">
         {/* First Card */}
       <div className="flex-1 space-y-3 sm:space-y-4">
           <div className="flex justify-center items-center">
-            <button className="bg-gradient-to-br from-[#8E4A54] via-[#B76E79] to-[#F3CCD4] text-white p-3 sm:p-4 rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-[#8E4A54]/30 transition-all duration-500 hover:scale-105 border-2 border-[#b76e79]/45 hover:border-[#F3CCD4] backdrop-blur-sm">
-              <MapPin className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14" />
+            <button className="bg-gradient-to-br from-[#5A3825] to-[#2C1A12] hover:from-[#2C1A12] hover:to-[#5A3825] text-white p-2.5 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-[#D4A056]/30 group pulse-glow" style={{ boxShadow: '0 8px 25px rgba(90, 56, 37, 0.3)' }}>
+              <MapPin className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 group-hover:scale-110 transition-transform duration-300" />
             </button>
           </div>
-          <h2 className="text-center font-serif-elegant font-semibold text-xl sm:text-2xl md:text-3xl">
-            Choose Event's
+          <h2 className="heading-3 text-center">
+            Plan With Detail
           </h2>
-          <p className="text-center font-2 paragraph-1 text-muted-light font-normal text-sm sm:text-base md:text-lg px-6">
-           Choose from our variety of food and event services with ease.
+          <p className="text-center font-2 paragraph-1 text-muted-light font-normal px-4 sm:px-6">
+            Dedicated planners map every ritual, menu change, and logistics request so you know exactly how the celebration will flow.
           </p>
         </div>
 
         {/* First Connector SVG */}
         <div className="hidden lg:block absolute -top-8 left-1/3 transform -translate-x-1/2 z-10">
           <svg
-            width="250"
+            className="w-48 lg:w-56 xl:w-64"
             height="120"
             viewBox="0 0 357 86"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
           >
             <path
               d="M355.52 6.29846C355.793 6.33766 356.047 6.14785 356.086 5.8745C356.125 5.60116 355.935 5.34779 355.662 5.30858L355.591 5.80352L355.52 6.29846ZM0.997559 80.273L0.911312 80.7655C42.9807 88.1326 72.9018 85.2455 97.4524 77.2243C121.986 69.2087 141.129 56.0714 161.605 43.0251C182.091 29.9731 203.947 16.9854 233.981 9.15914C264.016 1.3328 302.262 -1.33967 355.52 6.29846L355.591 5.80352L355.662 5.30858C302.303 -2.34401 263.919 0.324588 233.729 8.19145C203.538 16.0584 181.575 29.116 161.068 42.1818C140.552 55.2534 121.528 68.3063 97.1418 76.2738C72.7726 84.2357 43.0206 87.1244 1.08381 79.7805L0.997559 80.273Z"
-              fill="#b76e79"
-              stroke="#b76e79"
+              fill="#B28B5B"
+              stroke="#B28B5B"
               strokeWidth="2"
             />
           </svg>
@@ -46,31 +55,32 @@ const AboutUs = () => {
         {/* Second Card */}
         <div className="flex-1 space-y-3 sm:space-y-4">
           <div className="flex justify-center items-center">
-            <button className="bg-gradient-to-br from-[#8E4A54] via-[#B76E79] to-[#F3CCD4] text-white p-3 sm:p-4 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-[#8E4A54]/30 transition-all duration-500 hover:scale-105 border-2 border-[#b76e79]/45 hover:border-[#F3CCD4] backdrop-blur-sm">
-              <Calendar className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14" />
+            <button className="bg-gradient-to-br from-[#5A3825] to-[#2C1A12] hover:from-[#2C1A12] hover:to-[#5A3825] text-white p-2.5 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-[#D4A056]/30 group pulse-glow" style={{ boxShadow: '0 8px 25px rgba(90, 56, 37, 0.3)' }}>
+              <Calendar className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 group-hover:scale-110 transition-transform duration-300" />
             </button>
           </div>
-          <h2 className="text-center font-serif-elegant font-semibold text-xl sm:text-2xl md:text-3xl">
-            Book Event's
+          <h2 className="heading-3 text-center">
+            Reserve Seamlessly
           </h2>
           <p className="text-center font-2 paragraph-1 text-muted-light font-normal text-sm sm:text-base md:text-lg px-6">
-           Book catering or dining experiences with ease and convenience.
+            A single booking desk confirms suites, banquets, outdoor lawns, and catering so there is one contract and one payment schedule.
           </p>
         </div>
 
         {/* Second Connector SVG */}
         <div className="hidden lg:block absolute -top-8 right-1/3 transform translate-x-1/2 z-10">
           <svg
-            width="250"
+            className="w-48 lg:w-56 xl:w-64"
             height="120"
             viewBox="0 0 356 86"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
           >
             <path
               d="M354.895 6.29846C355.169 6.33766 355.422 6.14785 355.461 5.8745C355.5 5.60116 355.311 5.34779 355.037 5.30858L354.966 5.80352L354.895 6.29846ZM0.373047 80.273L0.2868 80.7655C42.3562 88.1326 72.2773 85.2455 96.8279 77.2243C121.361 69.2087 140.504 56.0714 160.981 43.0251C181.466 29.9731 203.322 16.9854 233.356 9.15914C263.391 1.3328 301.638 -1.33967 354.895 6.29846L354.966 5.80352L355.037 5.30858C301.679 -2.34401 263.294 0.324588 233.104 8.19145C202.914 16.0584 180.951 29.116 160.443 42.1818C139.927 55.2534 120.904 68.3063 96.5173 76.2738C72.1481 84.2357 42.3961 87.1244 0.459293 79.7805L0.373047 80.273Z"
-              fill="#b76e79"
-              stroke="#b76e79"
+              fill="#B28B5B"
+              stroke="#B28B5B"
               strokeWidth="2"
             />
           </svg>
@@ -79,15 +89,15 @@ const AboutUs = () => {
         {/* Third Card */}
         <div className="flex-1 space-y-3 sm:space-y-4">
           <div className="flex justify-center items-center">
-            <button className="bg-gradient-to-br from-[#8E4A54] via-[#B76E79] to-[#F3CCD4] text-white p-3 sm:p-4 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-[#8E4A54]/30 transition-all duration-500 hover:scale-105 border-2 border-[#b76e79]/45 hover:border-[#F3CCD4] backdrop-blur-sm">
-              <CarFront className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14" />
+            <button className="bg-gradient-to-br from-[#5A3825] to-[#2C1A12] hover:from-[#2C1A12] hover:to-[#5A3825] text-white p-2.5 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-[#D4A056]/30 group pulse-glow" style={{ boxShadow: '0 8px 25px rgba(90, 56, 37, 0.3)' }}>
+              <CarFront className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 group-hover:scale-110 transition-transform duration-300" />
             </button>
           </div>
-          <h2 className="text-center font-serif-elegant font-semibold text-xl sm:text-2xl md:text-3xl">
-            Enjoy Event's
+          <h2 className="heading-3 text-center">
+            Host In Comfort
           </h2>
           <p className="text-center font-2 paragraph-1 text-muted-light font-normal text-sm sm:text-base md:text-lg px-6">
-           Enjoy flavorful food and excellent hospitality every time.
+            Culinary, service, and valet teams stay on-site throughout the event so you can focus on meeting guests instead of managing vendors.
           </p>
         </div>
       </div>

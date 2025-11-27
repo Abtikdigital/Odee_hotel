@@ -10,20 +10,30 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.4.0",
     "@tailwindcss/vite": "^4.1.11",
+    "@tsparticles/engine": "^3.9.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
     "axios": "^1.11.0",
+    "gsap": "^3.13.0",
     "joi": "^18.0.1",
+    "jquery": "^3.7.1",
     "lucide-react": "^0.536.0",
     "mongoose": "^8.19.3",
     "nodemailer": "^7.0.10",
+    "particles.js": "^2.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.62.0",
+    "react-particles": "^2.12.2",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.7.1",
     "redux": "^5.0.1",
     "sweetalert2": "^11.14.5",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "three": "^0.181.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

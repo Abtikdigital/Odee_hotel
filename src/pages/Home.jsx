@@ -6,6 +6,7 @@ import OurServices from "../section/OurServices"
 import Testimonial from "../section/Testimonial"
 import Contact from "../section/Contact"
 import AboutUs from "../section/AboutUs"
+import Gallery from "../section/Gallery"
 import Mainlayout from "../section/Mainlayout"
 
 
@@ -16,6 +17,7 @@ const Home = () => {
         <Partner/>
         <AboutUs/>
         <OurServices/>
+        <Gallery/>
         <Testimonial/>
         <Contact/>
     

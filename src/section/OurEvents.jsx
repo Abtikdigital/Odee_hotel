@@ -3,65 +3,25 @@ import { useDispatch } from "react-redux";
 
 // Sample data for all services with categories
 const allCards = [
-  { id: 1, title: "Grand Ballroom", price: "5000", category: "Wedding Events" },
-  {
-    id: 2,
-    title: "Fun Zone Party",
-    price: "800",
-    category: "Birthday Parties",
-  },
-  { id: 3, title: "Deluxe King Room", price: "250", category: "Book Rooms" },
-  {
-    id: 4,
-    title: "Garden Gazebo Setup",
-    price: "2000",
-    category: "Wedding Events",
-  },
-  {
-    id: 5,
-    title: "Standard Double Room",
-    price: "150",
-    category: "Book Rooms",
-  },
-  {
-    id: 6,
-    title: "Magic Show Package",
-    price: "1200",
-    category: "Birthday Parties",
-  },
-  { id: 7, title: "Honeymoon Suite", price: "400", category: "Book Rooms" },
-  {
-    id: 8,
-    title: "Full Catering Service",
-    price: "3000",
-    category: "Wedding Events",
-  },
-  {
-    id: 9,
-    title: "Themed Party Decor",
-    price: "1500",
-    category: "Birthday Parties",
-  },
-  { id: 10, title: "Conference Hall", price: "1800", category: "Book Rooms" },
-  {
-    id: 11,
-    title: "DJ & Music System",
-    price: "1000",
-    category: "Wedding Events",
-  },
-  {
-    id: 12,
-    title: "Kids Play Area",
-    price: "900",
-    category: "Birthday Parties",
-  },
+  { id: 1, title: "Sangeet & Mehendi Evenings", category: "Wedding Events" },
+  { id: 2, title: "Haldi Brunch on the Lawn", category: "Wedding Events" },
+  { id: 3, title: "Intimate Ring Ceremony", category: "Wedding Events" },
+  { id: 4, title: "Premium Cocktail Social", category: "Wedding Events" },
+  { id: 5, title: "Kids Treasure-Hunt Party", category: "Birthday Parties" },
+  { id: 6, title: "Quinceañera / Sweet 16", category: "Birthday Parties" },
+  { id: 7, title: "Milestone Birthday Dinner", category: "Birthday Parties" },
+  { id: 8, title: "Community Brunch Festival", category: "Birthday Parties" },
+  { id: 9, title: "Leadership Offsite Summit", category: "Corporate" },
+  { id: 10, title: "Annual Awards Gala", category: "Corporate" },
+  { id: 11, title: "Product Showcase Lounge", category: "Corporate" },
+  { id: 12, title: "Investor Networking Evening", category: "Corporate" },
 ];
 
 // Number of items to show initially and load with each "See More" click
 const ITEMS_PER_PAGE = 4;
 
-const OurServices = () => {
-  const tabs = ["All", "Wedding Events", "Birthday Parties", "Book Rooms"];
+const OurEvents = () => {
+  const tabs = ["All", "Wedding Events", "Birthday Parties", "Corporate"];
 
   const [activeTab, setActiveTab] = useState(tabs[0]);
   // State to track the number of visible items
@@ -90,55 +50,66 @@ const OurServices = () => {
   };
 
   return (
-    <section className="section-wrapper bg-premium-section space-y-10 md:space-y-14 border-b-4 border-[#b76e79]/35 overflow-hidden">
-      <div className="relative z-10">
-      <div className="text-center space-y-4 max-w-4xl mx-auto">
-        <h2 className="heading-2">Our Event's</h2>
-        <p className="text-base sm:text-lg md:text-xl paragraph-1 font-2 text-muted-light">
-          Discover our exclusive events and celebrations designed for luxury and elegance.
+    <section className="section-wrapper bg-premium-section space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 border-b border-[#D4A056]/30 overflow-hidden premium-fade-in">
+      <div className="relative z-20 space-y-6 sm:space-y-8 md:space-y-10">
+      <div className="text-center space-y-4 sm:space-y-5 md:space-y-6 max-w-4xl mx-auto">
+        <div className="flex justify-center">
+          <div className="premium-badge">
+            <span>EVENT PLAYBOOK</span>
+          </div>
+        </div>
+        <h2 className="heading-2">Signature Celebrations We Host</h2>
+        <p className="paragraph-1 font-2 text-muted-light leading-relaxed max-w-3xl mx-auto">
+          From pheras on our open-air decks to boardroom reveals in our glass ballroom, Ode choreographs every ritual, rehearsal, and reveal with the same hospitality-first mindset.
         </p>
       </div>
 
-      <section className="space-y-6 md:space-y-8">
+      <section className="space-y-6 sm:space-y-8 md:space-y-10">
         {/* Tabs container */}
-        <div className="relative border-b border-[#b76e79]/30 shadow-lg/30 rounded-2xl bg-white/5 backdrop-blur-sm">
+        <div className="relative border-2 border-[#D4A056]/40 rounded-2xl sm:rounded-3xl bg-white/90 backdrop-blur-xl shadow-2xl overflow-hidden" style={{ boxShadow: '0 12px 35px rgba(90, 56, 37, 0.15), 0 4px 12px rgba(90, 56, 37, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8)' }}>
           <div className="flex overflow-x-auto whitespace-nowrap scrollbar-hide">
             {tabs?.map((data) => (
               <button
                 key={data}
                 onClick={() => handleTabClick(data)}
-                className={`flex-1 min-w-fit cursor-pointer font-medium text-sm sm:text-base md:text-lg p-3 sm:p-4 transition-all duration-300 ${
+                className={`flex-1 min-w-fit cursor-pointer font-semibold text-xs sm:text-sm md:text-base lg:text-lg p-3 sm:p-4 md:p-5 transition-all duration-300 relative ${
                   activeTab === data
-                    ? "text-[#b78b28] border-b-4 border-[#b78b28] font-semibold shadow-xl shadow-[#8E4A54]/25"
-                    : "text-muted-light hover:text-white/90 hover:border-b-2 hover:border-[#b76e79]/55"
+                    ? "text-[#5A3825] font-bold"
+                    : "text-muted-light hover:text-[#5A3825]"
                 }`}
               >
                 {data}
+                {activeTab === data && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-[#D4A056] via-[#5A3825] to-[#D4A056] rounded-t-full"></span>
+                )}
+                {activeTab !== data && (
+                  <span className="absolute bottom-0 left-1/2 right-1/2 h-0.5 bg-[#B28B5B] rounded-full transform scale-x-0 transition-transform duration-300 hover:scale-x-100"></span>
+                )}
               </button>
             ))}
           </div>
         </div>
 
         {/* Cards Grid - now shows a "slice" of the filtered cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 max-w-7xl mx-auto">
           {filteredCards?.slice(0, visibleItems).map((card) => (
             <div
               key={card.id}
-              className="h-auto min-h-[280px] sm:min-h-[320px] md:min-h-[360px] bg-premium-card rounded-2xl flex flex-col justify-between p-5 sm:p-6 transition-all duration-500 group"
+              className="h-auto min-h-[280px] sm:min-h-[300px] md:min-h-[340px] lg:min-h-[360px] bg-premium-card rounded-2xl sm:rounded-3xl flex flex-col justify-between p-4 sm:p-5 md:p-6 lg:p-7 transition-all duration-500 group relative overflow-hidden fade-in-on-scroll"
             >
-              <h3 className="font-serif-elegant font-bold text-xl sm:text-2xl heading-3 mb-4">
-                {card.title}
-              </h3>
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
-                <div className="text-lg sm:text-xl font-semibold text-[#b78b28]">Rs {card.price}/-</div>
-                <div>
-                  <button
-                    onClick={toggleOpenDialog}
-                    className="bg-gradient-to-r from-[#8E4A54] via-[#B76E79] to-[#F3CCD4] cursor-pointer text-white px-4 sm:px-5 py-2.5 rounded-xl font-semibold hover:from-[#8E4A54] hover:via-[#E8B7C1] hover:to-[#FBEFF2] transition-all duration-500 text-sm sm:text-base shadow-lg hover:shadow-xl hover:shadow-[#8E4A54]/30 transform hover:scale-105 border border-[#b76e79]/45 backdrop-blur-sm"
-                    >
-                    Explore Event
-                  </button>
-                </div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#D4A056]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <h3 className="heading-3 mb-4 sm:mb-5 md:mb-6">
+                  {card.title}
+                </h3>
+              </div>
+              <div className="flex sm:justify-end relative z-10">
+                <button
+                  onClick={toggleOpenDialog}
+                  className="coffe-button font-2 text-xs sm:text-sm md:text-sm magnetic-button w-full sm:w-auto text-center"
+                >
+                  Plan This Event
+                </button>
               </div>
             </div>
           ))}
@@ -146,10 +117,10 @@ const OurServices = () => {
 
         {/* "See More" Button - only shows if there are more cards to load */}
         {visibleItems < filteredCards.length && (
-          <div className="flex justify-center items-center pt-4">
+          <div className="flex justify-center items-center pt-4 sm:pt-6 md:pt-8">
             <button
               onClick={handleSeeMore}
-                    className="bg-gradient-to-r from-[#8E4A54] via-[#B76E79] to-[#F3CCD4] cursor-pointer text-white px-7 sm:px-9 py-3 rounded-xl font-semibold hover:from-[#8E4A54] hover:via-[#E8B7C1] hover:to-[#FBEFF2] transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-[#8E4A54]/30 text-sm sm:text-base transform hover:scale-105 border border-[#b76e79]/45 backdrop-blur-sm"
+              className="coffe-button font-2"
             >
               See More
             </button>
@@ -161,4 +132,4 @@ const OurServices = () => {
   );
 };
 
-export default OurServices;
+export default OurEvents;

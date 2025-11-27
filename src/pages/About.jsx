@@ -4,7 +4,7 @@ import Hero from "../section/Hero";
 import Navbar from "../section/Navbar";
 import Partner from "../section/Partner";
 import Testimonial from "../section/Testimonial";
-import Image1 from "../assets/AboutUs/Image1.png";
+import GalleryHeroImage from "../assets/AboutUs/Image2.jpg";
 import { Check } from "lucide-react";
 import Mainlayout from "../section/Mainlayout";
 
@@ -45,10 +45,12 @@ const About = () => {
       <Hero />
       <Partner />
       {/* About Us Section */}
-      <section className="section-wrapper bg-premium-section space-y-10 md:space-y-14 overflow-hidden">
-        <div className="relative z-10 space-y-6 md:space-y-8">
-        <h2 className="heading-2 text-center uppercase">About Us</h2>
-        <p className="paragraph-1 text-muted-light text-center max-w-4xl mx-auto">
+      <section className="section-wrapper bg-premium-section space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 overflow-hidden">
+        <div className="relative z-20 space-y-4 sm:space-y-5 md:space-y-6">
+        <div className="flex justify-center">
+          <h2 className="heading-2 text-center uppercase">About Us</h2>
+        </div>
+        <p className="paragraph-1 text-muted-light text-center max-w-4xl mx-auto leading-relaxed">
           Ode Hotel and Resort Private Limited brings you authentic multi cuisine dining, beverages, desserts, and catering all in one place.
         </p>
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-7xl mx-auto">
@@ -56,35 +58,37 @@ const About = () => {
             {aboutSection?.map((data, index) => (
               <div
                 key={index}
-                className="space-y-3 sm:space-y-4 p-4 sm:p-6 md:p-7 bg-premium-card rounded-2xl border border-[#d6b98c]/45 shadow-xl hover:shadow-2xl hover:shadow-[#8E4A54]/25 transition-all duration-500 hover:border-[#F3CCD4]/55 hover:-translate-y-1 backdrop-blur-sm"
+                className="space-y-3 sm:space-y-4 p-4 sm:p-5 md:p-6 lg:p-7 bg-premium-card rounded-xl sm:rounded-2xl border-2 border-[#D4A056]/30 shadow hover:shadow-lg transition-all duration-300 hover:border-[#B28B5B] hover:-translate-y-1"
               >
-                <div className="flex gap-4 sm:gap-6 items-center">
+                <div className="flex gap-3 sm:gap-4 md:gap-6 items-center">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#8E4A54] via-[#d6b98c] to-[#F3CCD4] rounded-full blur-md opacity-60"></div>
-                    <div className="relative bg-gradient-to-br from-[#8E4A54] via-[#d6b98c] to-[#F3CCD4] p-2.5 sm:p-3 rounded-full shadow-lg">
-                      <data.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" strokeWidth={3} />
+                    <div className="absolute inset-0 bg-[#B28B5B] rounded-full blur-md opacity-60"></div>
+                    <div className="relative bg-[#5A3825] p-2 sm:p-2.5 md:p-3 rounded-full shadow">
+                      <data.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" strokeWidth={3} />
                     </div>
                   </div>
                   <h2 className="heading-3">{data?.title}</h2>
                 </div>
                 <div>
-                  <p className="paragraph-1 text-base leading-relaxed text-muted-light">{data?.description}</p>
+                  <p className="paragraph-1 leading-relaxed text-muted-light">{data?.description}</p>
                 </div>
               </div>
             ))}
           </div>
           <div className="w-full h-full">
-            <img src={Image1} className="h-full w-full object-cover rounded-2xl shadow-2xl border-4 border-[#d6b98c]/40 hover:border-[#F3CCD4]/55 transition-all duration-500 hover:shadow-[0_25px_50px_-12px_rgba(142,74,84,0.4)]" alt="About Us" />
+            <img src={GalleryHeroImage} loading="lazy" className="h-full w-full object-cover rounded-xl sm:rounded-2xl shadow-lg border-[3px] sm:border-4 border-[#D4A056]/40 hover:border-[#B28B5B] transition-all duration-300" alt="About Us" />
           </div>
         </section>
       </div>
       </section>
 
       {/* Team Section */}
-      <section className="section-wrapper bg-premium-section space-y-10 md:space-y-14 overflow-hidden">
-        <div className="relative z-10 space-y-6 md:space-y-8">
-        <h2 className="heading-2 text-center">Meet Our Team</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 max-w-7xl mx-auto">
+      <section className="section-wrapper bg-premium-section space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 overflow-hidden">
+        <div className="relative z-20 space-y-4 sm:space-y-5 md:space-y-6">
+        <div className="flex justify-center">
+          <h2 className="heading-2 text-center">Meet Our Team</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 max-w-7xl mx-auto">
           {teamData?.map((team, index) => {
             const initials = team?.name
               ?.split(" ")
@@ -93,21 +97,19 @@ const About = () => {
               ?.slice(0, 2)
               ?.toUpperCase();
             return (
-              <div key={index} className="space-y-4 group">
-                <div className="relative flex flex-col items-center justify-between gap-4 bg-premium-card rounded-2xl p-6 sm:p-7 h-full min-h-[280px] sm:min-h-[320px] shadow-xl hover:shadow-2xl hover:shadow-[#8E4A54]/25 transition-all duration-500 border border-[#d6b98c]/35">
-                  <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-full bg-gradient-to-br from-[#8E4A54] via-[#d6b98c] to-[#F3CCD4] flex items-center justify-center text-white text-3xl sm:text-4xl font-semibold shadow-xl mt-2">
-                    {initials}
-                  </div>
-                  <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[#d6b98c]/45 transition-colors duration-500 pointer-events-none"></div>
+              <div
+                key={index}
+                className="group bg-premium-card rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-7 lg:p-8 h-full min-h-[250px] sm:min-h-[270px] md:min-h-[290px] lg:min-h-[310px] shadow hover:shadow-lg transition-all duration-300 border-2 border-[#D4A056]/30 flex flex-col items-center justify-center text-center space-y-4"
+              >
+                <div className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 rounded-full bg-[#5A3825] flex items-center justify-center text-white text-lg sm:text-xl md:text-2xl font-semibold shadow">
+                  {initials}
                 </div>
-                <div className="text-center space-y-2">
-                  <h2 className="heading-3 font-serif-elegant">
-                    {team?.name}
-                  </h2>
-                  <h3 className="text-[#d6b98c] font-3 font-bold text-base sm:text-lg border-t border-[#d6b98c]/35 pt-2 inline-block">
-                    {team?.position}
-                  </h3>
-                </div>
+                <h2 className="heading-3 font-serif-elegant">
+                  {team?.name}
+                </h2>
+                <h3 className="text-[#6B4A3A] font-3 font-bold paragraph-1 border-t border-[#D4A056]/30 pt-1.5 sm:pt-2 inline-block">
+                  {team?.position}
+                </h3>
               </div>
             );
           })}

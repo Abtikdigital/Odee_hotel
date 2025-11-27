@@ -141,17 +141,24 @@ const Testimonial = () => {
   };
 
   return (
-    <section className="section-wrapper bg-premium-section space-y-10 md:space-y-14 border-b-4 border-[#b76e79]/35 overflow-hidden">
-      <div className="relative z-10 space-y-6">
-      <h1 className="heading-2 text-center">
-        Trusted by Thousands of Happy Customer
-      </h1>
-      <p className="paragraph-1 font-2 text-muted-light text-center max-w-3xl mx-auto">
-        We are proud to serve families, professionals, and travelers with quality food, catering, and hospitality.
-      </p>
+    <section className="section-wrapper bg-white space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 border-b border-[#D4A056]/30 overflow-hidden premium-fade-in">
+      <div className="relative z-20 space-y-6 sm:space-y-8">
+      <div className="text-center space-y-4 sm:space-y-5 md:space-y-6">
+        <div className="flex justify-center">
+          <div className="premium-badge">
+            <span>CLIENT TESTIMONIALS</span>
+          </div>
+        </div>
+        <h1 className="heading-2 text-center">
+          Trusted by Thousands of Happy Customer
+        </h1>
+        <p className="paragraph-1 font-2 text-muted-light text-center max-w-3xl mx-auto">
+          We are proud to serve families, professionals, and travelers with quality food, catering, and hospitality.
+        </p>
+      </div>
 
       {/* Cards Section with Slider */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden mt-6 sm:mt-8 md:mt-10">
         <div
           className="flex transition-transform duration-1000 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -167,23 +174,25 @@ const Testimonial = () => {
                   .map((data, index) => (
                     <div
                       key={slideIndex * itemsPerPage + index}
-                      className="bg-gradient-to-br from-[#8E4A54] via-[#B76E79] to-[#F3CCD4] p-5 sm:p-6 rounded-2xl space-y-3 sm:space-y-4 transform transition-all duration-500 hover:shadow-2xl hover:shadow-[#8E4A54]/30 mx-auto w-full max-w-md sm:max-w-lg md:max-w-none border border-[#B76E79]/45 hover:border-[#F3CCD4]/60 hover:scale-[1.02] backdrop-blur-sm"
+                      className="bg-gradient-to-br from-white via-[#F5EEE6]/20 to-white p-5 sm:p-6 md:p-7 lg:p-8 rounded-2xl sm:rounded-3xl space-y-4 sm:space-y-5 md:space-y-6 transform transition-all duration-500 hover:shadow-2xl mx-auto w-full max-w-md sm:max-w-lg md:max-w-none border-2 border-[#D4A056]/40 hover:border-[#D4A056] relative overflow-hidden group tilt-on-hover fade-in-on-scroll"
+                      style={{ boxShadow: '0 12px 35px rgba(90, 56, 37, 0.12), 0 4px 12px rgba(90, 56, 37, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9)' }}
                     >
-                      <section className="flex gap-3 sm:gap-4">
-                        <div className="bg-gradient-to-br from-[#8E4A54] via-[#B76E79] to-[#F3CCD4] h-10 w-10 sm:h-12 sm:w-12 rounded-full text-white flex justify-center items-center font-semibold text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all duration-300">
+                      <div className="absolute top-0 right-0 w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 bg-gradient-to-br from-[#D4A056]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <section className="flex gap-3 sm:gap-4 md:gap-5 relative z-10">
+                        <div className="bg-gradient-to-br from-[#5A3825] to-[#2C1A12] h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-xl sm:rounded-2xl text-white flex justify-center items-center font-bold text-sm sm:text-base md:text-lg shadow-xl" style={{ boxShadow: '0 6px 18px rgba(90, 56, 37, 0.3)' }}>
                           {data?.name?.split(" ")[0][0] +
                             data?.name?.split(" ")[1][0]}
                         </div>
-                        <div className="text-white flex-1">
-                          <h2 className="text-sm sm:text-base md:text-lg font-medium font-serif-elegant">
+                        <div className="text-[#5A3825] flex-1">
+                          <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold font-serif-elegant">
                             {data?.name}
                           </h2>
-                          <p className="text-xs sm:text-sm font-normal opacity-90">
+                          <p className="text-[10px] sm:text-xs md:text-sm font-medium text-[#B28B5B] mt-0.5 sm:mt-1">
                             {data?.location}
                           </p>
                         </div>
                       </section>
-                      <p className="text-white leading-relaxed text-xs sm:text-sm md:text-base italic">
+                      <p className="text-[#6B4A3A] leading-relaxed text-xs sm:text-sm md:text-base lg:text-lg italic relative z-10">
                         "{data?.message}"
                       </p>
                     </div>
@@ -195,17 +204,17 @@ const Testimonial = () => {
       </div>
 
       {/* Navigation Section */}
-      <div className="flex flex-col sm:flex-row justify-between items-center mt-6 sm:mt-8 gap-4 sm:gap-0">
+      <div className="flex flex-col sm:flex-row justify-between items-center mt-8 sm:mt-10 md:mt-12 gap-4 sm:gap-0">
         {/* Slide Indicators */}
         <section className="flex gap-2 sm:gap-3 order-2 sm:order-1">
           {Array.from({ length: totalSlides }).map((_, index) => (
             <div
               key={index}
               onClick={() => goToSlide(index)}
-              className={`cursor-pointer transition-all duration-300 ${
+              className={`cursor-pointer transition-all duration-200 ${
                 index === currentSlide
-                  ? "w-8 sm:w-10 bg-gradient-to-r from-[#8E4A54] via-[#B76E79] to-[#F3CCD4] h-2.5 sm:h-3 rounded-2xl shadow-lg border border-[#F3CCD4]/60"
-                  : "w-2 sm:w-3 bg-white/20 h-2 sm:h-3 rounded-full hover:bg-[#B76E79]/50 hover:scale-125"
+                  ? "w-8 sm:w-10 bg-gradient-to-r from-[#5A3825] to-[#2C1A12] h-2.5 sm:h-3 rounded-2xl shadow-lg"
+                  : "w-2 sm:w-3 bg-[#B28B5B] h-2 sm:h-3 rounded-full hover:bg-[#D4A056]"
               }`}
             ></div>
           ))}
@@ -215,17 +224,17 @@ const Testimonial = () => {
         <section className="flex gap-2 sm:gap-3 order-1 sm:order-2">
           <button
             onClick={prevSlide}
-            className="rounded-full bg-white/10 p-2 sm:p-2.5 cursor-pointer hover:bg-white/20 transition-all duration-300 disabled:opacity-50 group border border-[#B76E79]/40 hover:border-[#F3CCD4] hover:scale-110"
+            className="rounded-full bg-white p-2 sm:p-2.5 cursor-pointer hover:bg-[#F5EEE6] transition-all duration-200 disabled:opacity-50 group border-2 border-[#B28B5B] hover:border-[#D4A056] shadow-lg"
             aria-label="Previous slide"
           >
-            <MoveLeft className="text-[#b78b28] w-4 h-4 sm:w-5 sm:h-5 group-hover:transform group-hover:-translate-x-1 transition-transform duration-200" />
+            <MoveLeft className="text-[#5A3825] w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-1 transition-transform duration-200" />
           </button>
           <button
             onClick={nextSlide}
-            className="rounded-full bg-white/10 p-2 sm:p-2.5 cursor-pointer hover:bg-white/20 transition-all duration-300 disabled:opacity-50 group border border-[#B76E79]/40 hover:border-[#F3CCD4] hover:scale-110"
+            className="rounded-full bg-white p-2 sm:p-2.5 cursor-pointer hover:bg-[#F5EEE6] transition-all duration-200 disabled:opacity-50 group border-2 border-[#B28B5B] hover:border-[#D4A056] shadow-lg"
             aria-label="Next slide"
           >
-            <MoveRight className="text-[#b78b28] w-4 h-4 sm:w-5 sm:h-5 group-hover:transform group-hover:translate-x-1 transition-transform duration-200" />
+            <MoveRight className="text-[#5A3825] w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-200" />
           </button>
         </section>
       </div>
